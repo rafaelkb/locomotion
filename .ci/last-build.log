@@ -1,0 +1,409 @@
+Downloading https://services.gradle.org/distributions/gradle-9.3.0-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+
+Welcome to Gradle 9.3.0!
+
+Here are the highlights of this release:
+ - Test reporting improvements
+ - Error and warning improvements
+ - Build authoring improvements
+
+For more details see https://docs.gradle.org/9.3.0/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+Running Stonecutter 0.5.1
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources NO-SOURCE
+> Task :buildSrc:compileKotlin
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:classes UP-TO-DATE
+
+> Task :buildSrc:jar
+:jar: No valid plugin descriptors were found in META-INF/gradle-plugins
+
+> Configure project :1.21.1
+Architectury Loom: 1.13.469
+This version of Architectury Loom is in beta! Please report any issues you encounter: https://github.com/architectury/architectury-loom/issues
+Architect Plugin: 3.4.164
+:remapped 51 mods (intermediary -> named) in 1s
+
+> Configure project :1.21.11
+:remapped 44 mods (intermediary -> named) in 1s
+
+> Configure project :fabric:1.21.11
+w: file:///home/runner/work/locomotion/locomotion/fabric/build.gradle.kts:129:5: 'val input: RegularFileProperty!' is deprecated. Deprecated in Java.
+
+Cannot remap lambda$init$2 because it does not exists in any of the targets [net/minecraft/class_429]
+Cannot remap iterateVisibleBlockEntities because it does not exists in any of the targets [net/minecraft/class_761]
+
+> Configure project :fabric:1.21.11
+:remapped 3 mods (intermediary -> named) in 1s
+
+> Configure project :neoforge:1.21.1
+w: file:///home/runner/work/locomotion/locomotion/neoforge/build.gradle.kts:112:5: 'val input: RegularFileProperty!' is deprecated. Deprecated in Java.
+:downloading minecraft libraries, this may take a while...
+:executing 10 MCP steps
+:step 1/10 - downloadClient
+:downloadClient done in 595321ns
+:step 2/10 - downloadServer
+:downloadServer done in 11647ns
+:step 3/10 - extractServer with net.neoforged.installertools:installertools:2.1.2:fatjar
+:extractServer done in 318ms
+:step 4/10 - downloadClientMappings
+:downloadClientMappings done in 140ms
+:step 5/10 - mergeMappings with net.neoforged.installertools:installertools:2.1.2:fatjar
+:mergeMappings done in 1s
+:step 6/10 - stripClient
+:stripClient done in 524ms
+:step 7/10 - stripServer
+:stripServer done in 346ms
+:step 8/10 - merge with net.neoforged:mergetool:2.0.3:fatjar
+:merge done in 2s
+:downloading minecraft libraries, this may take a while...
+:step 9/10 - listLibraries
+:listLibraries done in 897259ns
+:step 10/10 - rename with net.neoforged:AutoRenamingTool:2.0.3:all
+:rename done in 4s
+:patching jars
+:patched jars in 10s
+:access transforming minecraft
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+[10:34:51] [main/INFO]: Access Transformer processor running version null
+[10:34:51] [main/INFO]: Command line arguments [--inJar, /home/runner/.gradle/caches/fabric-loom/1.21.1/neoforge/21.1.234/minecraft-merged-mojang-patched.jar, --outJar, /home/runner/.gradle/caches/fabric-loom/1.21.1/neoforge/21.1.234/minecraft-merged-mojang-at-patched.jar, --atFile, /tmp/at-conf18196268164373929902.cfg]
+[10:34:51] [main/INFO]: Reading from /home/runner/.gradle/caches/fabric-loom/1.21.1/neoforge/21.1.234/minecraft-merged-mojang-patched.jar
+[10:34:51] [main/INFO]: Writing to /home/runner/.gradle/caches/fabric-loom/1.21.1/neoforge/21.1.234/minecraft-merged-mojang-at-patched.jar
+[10:34:51] [main/INFO]: Transformer file /tmp/at-conf18196268164373929902.cfg
+[10:34:51] [main/WARN]: Found existing output jar /home/runner/.gradle/caches/fabric-loom/1.21.1/neoforge/21.1.234/minecraft-merged-mojang-at-patched.jar, overwriting
+[10:34:54] [main/INFO]: JAR transformation complete /home/runner/.gradle/caches/fabric-loom/1.21.1/neoforge/21.1.234/minecraft-merged-mojang-at-patched.jar
+:access transformed minecraft in 13s
+:remapping minecraft (TinyRemapper, srg -> official)
+
+> Configure project :neoforge:1.21.11
+w: file:///home/runner/work/locomotion/locomotion/neoforge/build.gradle.kts:112:5: 'val input: RegularFileProperty!' is deprecated. Deprecated in Java.
+:downloading minecraft libraries, this may take a while...
+:executing 10 MCP steps
+:step 1/10 - downloadClient
+:downloadClient done in 13940ns
+:step 2/10 - downloadServer
+:downloadServer done in 4847ns
+:step 3/10 - extractServer with net.neoforged.installertools:installertools:4.0.7:fatjar
+:extractServer done in 267ms
+:step 4/10 - downloadClientMappings
+:downloadClientMappings done in 75ms
+:step 5/10 - mergeMappings with net.neoforged.installertools:installertools:4.0.7:fatjar
+:mergeMappings done in 1s
+:step 6/10 - stripClient
+:stripClient done in 440ms
+:step 7/10 - stripServer
+:stripServer done in 426ms
+:step 8/10 - merge with net.neoforged:mergetool:2.0.7:fatjar
+:merge done in 2s
+:downloading minecraft libraries, this may take a while...
+:step 9/10 - listLibraries
+:listLibraries done in 375877ns
+:step 10/10 - rename with net.neoforged:AutoRenamingTool:2.0.17:all
+:rename done in 4s
+:patching jars
+:patched jars in 5s
+:access transforming minecraft
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+[10:36:02] [main/INFO]: Access Transformer processor running version null
+[10:36:02] [main/INFO]: Command line arguments [--inJar, /home/runner/.gradle/caches/fabric-loom/1.21.11/neoforge/21.11.0-beta/minecraft-merged-mojang-patched.jar, --outJar, /home/runner/.gradle/caches/fabric-loom/1.21.11/neoforge/21.11.0-beta/minecraft-merged-mojang-at-patched.jar, --atFile, /tmp/at-conf18225436022120129260.cfg, --atFile, /tmp/at-conf9658302486130578548.cfg]
+[10:36:02] [main/INFO]: Reading from /home/runner/.gradle/caches/fabric-loom/1.21.11/neoforge/21.11.0-beta/minecraft-merged-mojang-patched.jar
+[10:36:02] [main/INFO]: Writing to /home/runner/.gradle/caches/fabric-loom/1.21.11/neoforge/21.11.0-beta/minecraft-merged-mojang-at-patched.jar
+[10:36:02] [main/INFO]: Transformer file /tmp/at-conf18225436022120129260.cfg
+[10:36:02] [main/INFO]: Transformer file /tmp/at-conf9658302486130578548.cfg
+[10:36:02] [main/WARN]: Found existing output jar /home/runner/.gradle/caches/fabric-loom/1.21.11/neoforge/21.11.0-beta/minecraft-merged-mojang-at-patched.jar, overwriting
+[10:36:05] [main/INFO]: JAR transformation complete /home/runner/.gradle/caches/fabric-loom/1.21.11/neoforge/21.11.0-beta/minecraft-merged-mojang-at-patched.jar
+:access transformed minecraft in 3s
+:remapping minecraft (TinyRemapper, srg -> official)
+
+> Task :1.21.1:setupChiseledBuild
+Switched to 1.21.1 in 337ms. (0 total | 0 processed | 0 skipped)
+
+> Task :1.21.11:setupChiseledBuild
+Switched to 1.21.11 in 115ms. (0 total | 0 processed | 0 skipped)
+
+> Task :fabric:1.21.11:setupChiseledBuild
+Switched to 1.21.11 in 3ms. (0 total | 0 processed | 0 skipped)
+
+> Task :neoforge:1.21.1:setupChiseledBuild
+Switched to 1.21.1 in 3ms. (0 total | 0 processed | 0 skipped)
+
+> Task :neoforge:1.21.11:setupChiseledBuild
+Switched to 1.21.11 in 2ms. (0 total | 0 processed | 0 skipped)
+
+> Task :chiseledStonecutter
+> Task :chiseledBuild
+> Task :1.21.11:compileJava
+> Task :1.21.11:processResources
+> Task :1.21.11:classes
+> Task :1.21.11:jar
+> Task :neoforge:1.21.11:compileJava
+> Task :neoforge:1.21.11:processResources
+> Task :neoforge:1.21.11:classes
+> Task :neoforge:1.21.11:jar
+> Task :neoforge:1.21.11:processIncludeJars
+
+> Task :1.21.11:transformProductionNeoForge
+[Architectury Transformer] Read classpath in 1.167 s
+[Architectury Transformer] Transformed jar with 5 transformer(s) in 2.006 s
+
+> Task :neoforge:1.21.11:shadowJar
+> Task :neoforge:1.21.11:sourcesJar
+> Task :neoforge:1.21.11:compileTestJava NO-SOURCE
+> Task :neoforge:1.21.11:processTestResources NO-SOURCE
+> Task :neoforge:1.21.11:testClasses UP-TO-DATE
+> Task :neoforge:1.21.11:test NO-SOURCE
+> Task :neoforge:1.21.11:validateAccessWidener NO-SOURCE
+> Task :neoforge:1.21.11:check UP-TO-DATE
+> Task :1.21.1:rewriteLegacySources
+> Task :neoforge:1.21.11:remapJar
+> Task :neoforge:1.21.11:remapSourcesJar
+
+> Task :1.21.1:compileJava
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/generated/legacy-sources/com/trainguy9512/locomotion/resource/json/GsonConfiguration.java:25: error: method setLenient in class GsonBuilder cannot be applied to given types;
+        builder.setLenient(false);
+               ^
+  required: no arguments
+  found:    boolean
+  reason: actual and formal argument lists differ in length
+1 error
+
+> Task :1.21.1:compileJava FAILED
+> Task :neoforge:1.21.11:assemble
+> Task :neoforge:1.21.11:build
+> Task :neoforge:1.21.11:buildAndCollect
+> Task :1.21.1:processResources
+> Task :neoforge:1.21.1:processResources
+> Task :neoforge:1.21.1:processIncludeJars
+> Task :neoforge:1.21.1:sourcesJar
+> Task :neoforge:1.21.1:processTestResources NO-SOURCE
+> Task :neoforge:1.21.1:validateAccessWidener NO-SOURCE
+> Task :fabric:1.21.11:compileJava
+> Task :fabric:1.21.11:processResources
+> Task :fabric:1.21.11:classes
+> Task :fabric:1.21.11:jar
+> Task :fabric:1.21.11:processIncludeJars
+
+> Task :1.21.11:transformProductionFabric
+[Architectury Transformer] Read classpath in 1.101 s
+[Architectury Transformer] Transformed jar with 5 transformer(s) in 1.217 s
+
+> Task :fabric:1.21.11:shadowJar
+> Task :fabric:1.21.11:sourcesJar
+> Task :fabric:1.21.11:compileTestJava NO-SOURCE
+> Task :fabric:1.21.11:processTestResources NO-SOURCE
+> Task :fabric:1.21.11:testClasses UP-TO-DATE
+> Task :fabric:1.21.11:test NO-SOURCE
+> Task :fabric:1.21.11:validateAccessWidener NO-SOURCE
+> Task :fabric:1.21.11:check UP-TO-DATE
+> Task :fabric:1.21.11:remapSourcesJar
+> Task :fabric:1.21.11:remapJar
+> Task :fabric:1.21.11:assemble
+> Task :fabric:1.21.11:build
+> Task :fabric:1.21.11:buildAndCollect
+
+[Incubating] Problems report is available at: file:///home/runner/work/locomotion/locomotion/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':1.21.1:compileJava'.
+> Compilation failed; see the compiler output below.
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/generated/legacy-sources/com/trainguy9512/locomotion/resource/json/GsonConfiguration.java:25: error: method setLenient in class GsonBuilder cannot be applied to given types;
+          builder.setLenient(false);
+                 ^
+    required: no arguments
+    found:    boolean
+    reason: actual and formal argument lists differ in length
+  1 error
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':1.21.1:compileJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
+	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/generated/legacy-sources/com/trainguy9512/locomotion/resource/json/GsonConfiguration.java:25: error: method setLenient in class GsonBuilder cannot be applied to given types;
+        builder.setLenient(false);
+               ^
+  required: no arguments
+  found:    boolean
+  reason: actual and formal argument lists differ in length
+1 error
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:259)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:244)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:227)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:210)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:176)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:110)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:47)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:64)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:61)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:61)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:47)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:70)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:40)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:62)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:27)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:192)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:64)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:42)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:77)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:133)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:305)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+	... 30 more
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.3.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 6m 19s
+37 actionable tasks: 37 executed
