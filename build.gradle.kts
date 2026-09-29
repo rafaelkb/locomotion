@@ -59,14 +59,15 @@ tasks.processResources {
 
 stonecutter {
 	// Minecraft renamed ResourceLocation to Identifier in 1.21.11.
-	replacements.string(current.parsed < "1.21.11") {
-		replace("Identifier", "ResourceLocation")
-	}
+	// `replacement(direction = true, source, target)` registers a source -> target string
+	// replacement for this version only; the condition is evaluated per version because the
+	// central script runs once for every node in the tree.
+	if (eval(minecraft, "<1.21.11"))
+		replacement(true, "Identifier", "ResourceLocation")
 
 	// 1.21.2 renamed UseAnim to ItemUseAnimation.
-	replacements.string(current.parsed < "1.21.2") {
-		replace("ItemUseAnimation", "UseAnim")
-	}
+	if (eval(minecraft, "<1.21.2"))
+		replacement(true, "ItemUseAnimation", "UseAnim")
 }
 
 java {

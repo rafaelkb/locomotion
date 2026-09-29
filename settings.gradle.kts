@@ -11,8 +11,8 @@ pluginManagement {
 }
 
 plugins {
-    // Make sure the version here is the same as the dependency in buildSrc/build.gradle.kts.kts
-    id("dev.kikugie.stonecutter") version "0.5.1"
+    // Make sure the version here is the same as the dependency in buildSrc/build.gradle.kts
+    id("dev.kikugie.stonecutter") version "0.6.2"
 }
 
 stonecutter {
