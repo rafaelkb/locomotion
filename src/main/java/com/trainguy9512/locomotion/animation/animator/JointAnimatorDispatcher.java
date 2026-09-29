@@ -153,7 +153,11 @@ public class JointAnimatorDispatcher {
     private static boolean positionIsWithinCameraRadius(BlockPos blockPos) {
         BlockPos cameraBlockPos = Objects.requireNonNull(Minecraft.getInstance().getCameraEntity()).blockPosition();
         int radius = LocomotionMain.CONFIG.data().blockEntities.evaluationDistance;
+        //? if >= 1.21.2 {
         return cameraBlockPos.distChessboard(blockPos) < radius;
+        //?} else {
+        /*return Math.max(Math.abs(cameraBlockPos.getX() - blockPos.getX()), Math.max(Math.abs(cameraBlockPos.getY() - blockPos.getY()), Math.abs(cameraBlockPos.getZ() - blockPos.getZ()))) < radius;*/
+        //?}
     }
 
     private static boolean blockEntityIsEnabledInConfig(BlockEntityType<?> type) {

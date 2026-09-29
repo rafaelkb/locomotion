@@ -41,6 +41,14 @@ jobs:
           set -o pipefail
           ./gradlew --continue --stacktrace chiseledBuildNeoforge 2>&1 | tee build.log
 
+      - name: dump the minecraft api signatures the legacy port needs
+        if: always()
+        run: |
+          for v in 1.21.1 1.21.11; do
+            echo "########## api dump for $v" | tee -a build.log
+            ./gradlew --continue --init-script scripts/dump-api.gradle ":$v:dumpApi" 2>&1 | tee -a build.log || true
+          done
+
       - name: surface the gradle failure as annotations
         if: always()
         run: |

@@ -114,7 +114,9 @@ public class FirstPersonGenericItems {
     );
 
     public static final List<TagKey<Item>> BLOCK_ITEM_TAG_OVERRIDES = List.of(
+            //? if >= 1.21.2
             ItemTags.COPPER_CHESTS,
+            //? if >= 1.21.2
             ItemTags.SHULKER_BOXES,
             ItemTags.SKULLS,
             ItemTags.BEDS

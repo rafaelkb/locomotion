@@ -38,7 +38,11 @@ public class MixinLayerDefinitions {
 
             try {
 
+                //? if >= 1.21.2 {
                 FileWriter writer = new FileWriter(filePath + "/models/" + location.model().toDebugFileName() + "_" + location.layer() + ".json");
+                //?} else {
+                /*FileWriter writer = new FileWriter(filePath + "/models/" + location.getModel().toDebugFileName() + "_" + location.getLayer() + ".json");*/
+                //?}
                 GsonConfiguration.getInstance().toJson(layerDefinition, writer);
                 writer.close();
             } catch (IOException e) {

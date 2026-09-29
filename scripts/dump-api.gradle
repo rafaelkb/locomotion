@@ -1,0 +1,40 @@
+// Dumps the public signatures of a fixed list of classes from a project's compile
+// classpath, so version-specific API differences can be checked without decompiling.
+//
+//   ./gradlew --init-script scripts/dump-api.gradle :1.21.1:dumpApi
+//
+// Works for any project in the Stonecutter tree, e.g. `:1.21.11:dumpApi` or
+// `:neoforge:1.21.1:dumpApi`.
+
+allprojects { p ->
+    p.tasks.register("dumpApi") {
+        group = "verification"
+        description = "Prints javap output for the classes Locomotion's legacy ports depend on."
+        def wanted = [
+            'net.minecraft.client.model.geom.PartPose',
+            'net.minecraft.server.packs.resources.PreparableReloadListener',
+            'net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier',
+            'net.minecraft.client.Camera',
+            'net.minecraft.client.model.ModelLayerLocation',
+            'com.google.gson.Strictness',
+        ]
+        outputs.upToDateWhen { false }
+        doLast {
+            def cfg = p.configurations.findByName("compileClasspath")
+            if (cfg == null) {
+                println "no compileClasspath configuration in ${p.path}"
+                return
+            }
+            def classpath = cfg.files.collect { it.absolutePath }.join(File.pathSeparator)
+            wanted.each { cls ->
+                println "===== ${cls}"
+                def proc = ["javap", "-classpath", classpath, cls].execute()
+                def out = new StringBuilder()
+                def err = new StringBuilder()
+                proc.waitForProcessOutput(out, err)
+                println out.toString().trim()
+                if (proc.exitValue() != 0) println "!! ${err.toString().trim()}"
+            }
+        }
+    }
+}

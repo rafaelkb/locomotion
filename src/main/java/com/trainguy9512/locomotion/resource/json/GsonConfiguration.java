@@ -17,6 +17,7 @@ public class GsonConfiguration {
 
     private static Gson createInternal() {
         return new GsonBuilder()
+                //? if >= 1.21.2
                 .setStrictness(Strictness.STRICT)
                 .setPrettyPrinting()
                 .registerTypeAdapter(Vector3f.class, vector3fDeserializer())

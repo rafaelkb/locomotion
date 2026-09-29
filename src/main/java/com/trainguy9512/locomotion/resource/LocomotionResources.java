@@ -12,6 +12,9 @@ import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
+//? if < 1.21.5 {
+import net.minecraft.util.profiling.ProfilerFiller;
+//?}
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -63,6 +66,8 @@ public class LocomotionResources implements PreparableReloadListener {
         }
     }
 
+    // 1.21.5 replaced the six-argument reload callback with a SharedState based one.
+    //? if >= 1.21.5 {
     @Override
     public CompletableFuture<Void> reload(SharedState sharedState, Executor exectutor, PreparationBarrier barrier, Executor applyExectutor) {
         CompletableFuture<Map<Identifier, JointSkeleton>> loadedJointSkeletons = loadJointSkeletons(sharedState.resourceManager(), exectutor);
@@ -70,14 +75,31 @@ public class LocomotionResources implements PreparableReloadListener {
 
         return CompletableFuture.allOf(loadedJointSkeletons, loadedAnimationSequences)
                 .thenCompose(barrier::wait)
-                .thenCompose(voided -> CompletableFuture.runAsync(() -> {
-                    JOINT_SKELETONS.clear();
-                    JOINT_SKELETONS.putAll(loadedJointSkeletons.join());
-                    ANIMATION_SEQUENCES.clear();
-                    ANIMATION_SEQUENCES.putAll(loadedAnimationSequences.join());
-                    ANIMATION_SEQUENCES.replaceAll((Identifier, animationSequence) -> animationSequence.getBaked());
-                    LOGGER.info("Cleared and replaced Locomotion resource data.");
-                }));
+                .thenCompose(voided -> applyReloadedData(loadedJointSkeletons, loadedAnimationSequences));
+    }
+    //?} else {
+    /*@Override
+    public CompletableFuture<Void> reload(PreparationBarrier barrier, ResourceManager resourceManager, ProfilerFiller preparationsProfiler, ProfilerFiller reloadProfiler, Executor backgroundExecutor, Executor gameExecutor) {
+        CompletableFuture<Map<Identifier, JointSkeleton>> loadedJointSkeletons = loadJointSkeletons(resourceManager, backgroundExecutor);
+        CompletableFuture<Map<Identifier, AnimationSequence>> loadedAnimationSequences = loadAnimationSequences(resourceManager, backgroundExecutor);
+
+        return CompletableFuture.allOf(loadedJointSkeletons, loadedAnimationSequences)
+                .thenCompose(barrier::waitFor)
+                .thenCompose(voided -> applyReloadedData(loadedJointSkeletons, loadedAnimationSequences));
+    }*///?}
+
+    private static CompletableFuture<Void> applyReloadedData(
+            CompletableFuture<Map<Identifier, JointSkeleton>> loadedJointSkeletons,
+            CompletableFuture<Map<Identifier, AnimationSequence>> loadedAnimationSequences
+    ) {
+        return CompletableFuture.runAsync(() -> {
+            JOINT_SKELETONS.clear();
+            JOINT_SKELETONS.putAll(loadedJointSkeletons.join());
+            ANIMATION_SEQUENCES.clear();
+            ANIMATION_SEQUENCES.putAll(loadedAnimationSequences.join());
+            ANIMATION_SEQUENCES.replaceAll((Identifier, animationSequence) -> animationSequence.getBaked());
+            LOGGER.info("Cleared and replaced Locomotion resource data.");
+        });
     }
 
 //    public static CompletableFuture<Void> reload(PreparableReloadListener.PreparationBarrier barrier, ResourceManager manager, Executor backgroundExecutor, Executor gameExecutor) {

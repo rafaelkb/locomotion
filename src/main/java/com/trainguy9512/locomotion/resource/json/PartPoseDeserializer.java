@@ -42,6 +42,8 @@ public class PartPoseDeserializer implements JsonDeserializer<PartPose> {
                 Vector3f.class,
                 DEFAULT_SCALE
         );
+        // PartPose only became a record after 1.21.1; before that the scale lived in fields.
+        //? if >= 1.21.2 {
         return new PartPose(
                 translation.x(),
                 translation.y(),
@@ -53,5 +55,18 @@ public class PartPoseDeserializer implements JsonDeserializer<PartPose> {
                 scale.y(),
                 scale.z()
         );
+        //?} else {
+        /*PartPose partPose = new PartPose(
+                translation.x(),
+                translation.y(),
+                translation.z(),
+                rotation.x(),
+                rotation.y(),
+                rotation.z()
+        );
+        partPose.xScale = scale.x();
+        partPose.yScale = scale.y();
+        partPose.zScale = scale.z();
+        return partPose;*///?}
     }
 }

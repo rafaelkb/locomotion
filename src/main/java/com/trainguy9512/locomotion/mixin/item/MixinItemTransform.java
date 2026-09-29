@@ -19,7 +19,11 @@ public class MixinItemTransform {
     )
     public void flipItemModel(boolean bl, PoseStack.Pose pose, CallbackInfo ci) {
         if (FirstPersonPlayerRenderer.SHOULD_FLIP_ITEM_TRANSFORM && FirstPersonPlayerRenderer.IS_RENDERING_LOCOMOTION_FIRST_PERSON) {
+            //? if >= 1.21.2 {
             pose.rotate(Axis.YP.rotation(Mth.PI));
+            //?} else {
+            /*pose.mulPose(Axis.YP.rotation(Mth.PI));*/
+            //?}
         }
     }
 }

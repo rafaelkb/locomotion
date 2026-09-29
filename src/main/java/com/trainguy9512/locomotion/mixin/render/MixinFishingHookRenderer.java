@@ -73,11 +73,20 @@ public abstract class MixinFishingHookRenderer {
                             .mul(animationPose.getJointChannel(itemJoint).getTransform())
                             .translate(0, 10, 5);
 
+                    //? if >= 1.21.2 {
                     float playerRotationX = player.getXRot(partialTick) * Mth.DEG_TO_RAD;
                     float playerRotationY = player.getYRot(partialTick) * -Mth.DEG_TO_RAD;
+                    //?} else {
+                    /*float playerRotationX = player.getXRot() * Mth.DEG_TO_RAD;
+                    float playerRotationY = player.getYRot() * -Mth.DEG_TO_RAD;*/
+                    //?}
                     Quaternionf playerRotation = new Quaternionf().rotateY(playerRotationY).rotateX(playerRotationX);
                     Matrix4f playerTransform = new Matrix4f()
+                            //? if >= 1.21.2 {
                             .translate(entityRenderDispatcher.camera.position().toVector3f())
+                            //?} else {
+                            /*.translate(entityRenderDispatcher.camera.getPosition().toVector3f())*/
+                            //?}
                             .rotate(playerRotation);
 
 //                    entityRenderDispatcher.camera.getNearPlane().
@@ -88,7 +97,11 @@ public abstract class MixinFishingHookRenderer {
                             .mul(animationPose.getJointChannel(FirstPersonJointAnimator.CAMERA_JOINT).getTransform())
                             .translate(0, 0, -5);
 
+                    //? if >= 1.21.2 {
                     Vector3f cameraPosition = entityRenderDispatcher.camera.position().add(player.getEyePosition(partialTick)).toVector3f();
+                    //?} else {
+                    /*Vector3f cameraPosition = entityRenderDispatcher.camera.getPosition().add(player.getEyePosition(partialTick)).toVector3f();*/
+                    //?}
                     Quaternionf cameraRotation = entityRenderDispatcher.camera.rotation();
                     Matrix4f cameraTransform = new Matrix4f().translate(cameraPosition);
 
