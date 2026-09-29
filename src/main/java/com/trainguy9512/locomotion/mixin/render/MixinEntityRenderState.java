@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render;
 
+//? if >= 1.21.2 {
+
 import com.trainguy9512.locomotion.access.EntityRenderStateAccess;
 import com.trainguy9512.locomotion.animation.animator.entity.EntityJointAnimator;
 import com.trainguy9512.locomotion.animation.pose.ModelPartSpacePose;
@@ -17,7 +19,7 @@ public class MixinEntityRenderState implements EntityRenderStateAccess {
     private ModelPartSpacePose interpolatedPose;
 
     @Unique
-    private EntityJointAnimator<?, ?> entityJointAnimator;
+    private EntityJointAnimator<?> entityJointAnimator;
 
     @Unique
     @Override
@@ -31,12 +33,13 @@ public class MixinEntityRenderState implements EntityRenderStateAccess {
     }
 
     @Override
-    public void animationOverhaul$setEntityJointAnimator(EntityJointAnimator<?, ?> entityJointAnimator) {
+    public void animationOverhaul$setEntityJointAnimator(EntityJointAnimator<?> entityJointAnimator) {
         this.entityJointAnimator = entityJointAnimator;
     }
 
     @Override
-    public Optional<EntityJointAnimator<?, ?>> animationOverhaul$getEntityJointAnimator() {
+    public Optional<EntityJointAnimator<?>> animationOverhaul$getEntityJointAnimator() {
         return Optional.ofNullable(this.entityJointAnimator);
     }
 }
+//?}

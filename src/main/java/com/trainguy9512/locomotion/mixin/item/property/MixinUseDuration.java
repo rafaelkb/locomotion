@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.item.property;
 
+//? if >= 1.21.11 {
+
 import com.trainguy9512.locomotion.LocomotionMain;
 import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonDrivers;
@@ -34,3 +36,4 @@ public class MixinUseDuration {
         }
     }
 }
+//?}

@@ -1,12 +1,10 @@
 package com.trainguy9512.locomotion.mixin.render;
 
-import com.google.common.annotations.VisibleForTesting;
+//? if >= 1.21.2 {
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.trainguy9512.locomotion.LocomotionMain;
 import com.trainguy9512.locomotion.access.FirstPersonPlayerRendererGetter;
 import com.trainguy9512.locomotion.render.FirstPersonPlayerRenderer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
@@ -22,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
@@ -72,3 +69,47 @@ public class MixinItemInHandRenderer {
         }
     }
 }
+//?} else {
+/*
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.trainguy9512.locomotion.LocomotionMain;
+import com.trainguy9512.locomotion.access.FirstPersonPlayerRendererGetter;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.ItemInHandRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.world.InteractionHand;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(ItemInHandRenderer.class)
+public class MixinItemInHandRenderer {
+
+    @Inject(
+            method = "renderHandsWithItems",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void locomotion$renderAnimatedHands(
+            float partialTick,
+            PoseStack poseStack,
+            MultiBufferSource.BufferSource bufferSource,
+            LocalPlayer player,
+            int packedLight,
+            CallbackInfo ci
+    ) {
+        if (!LocomotionMain.CONFIG.data().firstPersonPlayer.enableRenderer) {
+            return;
+        }
+
+        FirstPersonPlayerRendererGetter rendererGetter = (FirstPersonPlayerRendererGetter) Minecraft.getInstance().getEntityRenderDispatcher();
+        rendererGetter.locomotion$getFirstPersonPlayerRenderer().ifPresent(renderer -> {
+            if (renderer.render(partialTick, poseStack, bufferSource, player, packedLight)) {
+                ci.cancel();
+            }
+        });
+    }
+}
+*///?}

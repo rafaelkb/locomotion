@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render.layer;
 
+//? if >= 1.21.2 {
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,3 +26,4 @@ public class MixinCapeLayer {
      */
 }
 
+//?}

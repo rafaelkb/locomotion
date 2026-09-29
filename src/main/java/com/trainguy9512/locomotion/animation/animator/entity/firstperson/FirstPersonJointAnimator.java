@@ -4,7 +4,9 @@ import com.trainguy9512.locomotion.LocomotionMain;
 import com.trainguy9512.locomotion.animation.animator.entity.LivingEntityJointAnimator;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonHandPoseSwitching;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonShield;
+//? if >= 1.21.11 {
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonSpear;
+//?}
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonSpyglass;
 import com.trainguy9512.locomotion.animation.data.*;
 import com.trainguy9512.locomotion.animation.driver.VariableDriver;
@@ -19,14 +21,13 @@ import com.trainguy9512.locomotion.animation.util.Easing;
 import com.trainguy9512.locomotion.animation.util.TimeSpan;
 import com.trainguy9512.locomotion.animation.util.Transition;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -37,7 +38,7 @@ import org.joml.Vector3f;
 
 import java.util.Set;
 
-public class FirstPersonJointAnimator implements LivingEntityJointAnimator<LocalPlayer, AvatarRenderState> {
+public class FirstPersonJointAnimator implements LivingEntityJointAnimator<LocalPlayer> {
 
     private static final Logger LOGGER = LogManager.getLogger("Locomotion/FPJointAnimator");
 
@@ -102,10 +103,6 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
             case LEFT -> LEFT_ITEM_JOINT;
             case RIGHT -> RIGHT_ITEM_JOINT;
         };
-    }
-
-    @Override
-    public void postProcessModelParts(EntityModel<AvatarRenderState> entityModel, AvatarRenderState entityRenderState) {
     }
 
     @Override
@@ -210,7 +207,7 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
         //? if >= 1.21.5 {
         driverContainer.getDriver(FirstPersonDrivers.HOTBAR_SLOT).setValue(player.getInventory().getSelectedSlot());
         //?} else {
-        /*driverContainer.getDriver(HOTBAR_SLOT).setValue(dataReference.getInventory().selected);*/
+        driverContainer.getDriver(FirstPersonDrivers.HOTBAR_SLOT).setValue(player.getInventory().selected);
         //?}
 
         //? if >= 1.21.11 {
@@ -231,10 +228,15 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
         driverContainer.getDriver(FirstPersonDrivers.FALL_DISTANCE).setValue((float) player.fallDistance);
 
         driverContainer.getDriver(FirstPersonDrivers.IS_IN_RIPTIDE).setValue(player.isAutoSpinAttack());
+        //? if >= 1.21.5 {
         driverContainer.getDriver(FirstPersonDrivers.IS_MOVING).setValue(player.input.keyPresses.forward() || player.input.keyPresses.backward() || player.input.keyPresses.left() || player.input.keyPresses.right());
+        driverContainer.getDriver(FirstPersonDrivers.IS_JUMPING).setValue(player.input.keyPresses.jump());
+        //?} else {
+        driverContainer.getDriver(FirstPersonDrivers.IS_MOVING).setValue(player.input.forwardImpulse != 0 || player.input.leftImpulse != 0);
+        driverContainer.getDriver(FirstPersonDrivers.IS_JUMPING).setValue(player.input.jumping);
+        //?}
         driverContainer.getDriver(FirstPersonDrivers.IS_SPRINTING).setValue(player.isSprinting());
         driverContainer.getDriver(FirstPersonDrivers.IS_ON_GROUND).setValue(player.onGround());
-        driverContainer.getDriver(FirstPersonDrivers.IS_JUMPING).setValue(player.input.keyPresses.jump());
         driverContainer.getDriver(FirstPersonDrivers.IS_CROUCHING).setValue(player.isCrouching());
         driverContainer.getDriver(FirstPersonDrivers.IS_UNDERWATER).setValue(player.isUnderWater() || (player.isInWater() && !player.onGround()));
         driverContainer.getDriver(FirstPersonDrivers.IS_PASSENGER).setValue(player.isPassenger());
@@ -344,15 +346,25 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
                 driverContainer.getDriver(FirstPersonDrivers.LAST_USED_HAND).setValue(hand);
                 driverContainer.getDriver(FirstPersonDrivers.PROJECTILE_ITEM).setValue(dataReference.getProjectile(itemInHand));
                 if (itemInHand.getUseAnimation() == ItemUseAnimation.CROSSBOW) {
+                    float chargeSpeedMultiplier;
+                    //? if >= 1.21.11 {
+                    int chargeDuration = CrossbowItem.getChargeDuration(itemInHand, dataReference);
+                    chargeSpeedMultiplier = chargeDuration > 0 ? 25f / chargeDuration : 1f;
+                    //?} else {
                     float chargeTime = EnchantmentHelper.modifyCrossbowChargingTime(itemInHand, dataReference, 1.25f);
-                    float chargeSpeedMultiplier = 1.25f / chargeTime;
+                    chargeSpeedMultiplier = chargeTime > 0 ? 1.25f / chargeTime : 1f;
+                    //?}
                     driverContainer.getDriver(FirstPersonDrivers.CROSSBOW_RELOAD_SPEED).setValue(chargeSpeedMultiplier);
                 }
             }
 
             // Is item on cooldown
             ItemStack renderedItem = driverContainer.getDriverValue(FirstPersonDrivers.getRenderedItemDriver(hand));
+            //? if >= 1.21.11 {
             boolean isItemOnCooldown = dataReference.getCooldowns().isOnCooldown(renderedItem);
+            //?} else {
+            boolean isItemOnCooldown = dataReference.getCooldowns().isOnCooldown(renderedItem.getItem());
+            //?}
             driverContainer.getDriver(FirstPersonDrivers.getItemOnCooldownDriver(hand)).setValue(isItemOnCooldown);
 
         }

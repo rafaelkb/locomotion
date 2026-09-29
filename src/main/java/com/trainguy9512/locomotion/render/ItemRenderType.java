@@ -15,7 +15,11 @@ public enum ItemRenderType {
 
     public ItemDisplayContext getItemDisplayContext(HumanoidArm side) {
         if (this == ON_SHELF) {
+            //? if >= 1.21.11 {
             return ItemDisplayContext.ON_SHELF;
+            //?} else {
+            return ItemDisplayContext.FIXED;
+            //?}
         }
         return side == HumanoidArm.RIGHT ? ItemDisplayContext.THIRD_PERSON_RIGHT_HAND : ItemDisplayContext.THIRD_PERSON_LEFT_HAND;
     }

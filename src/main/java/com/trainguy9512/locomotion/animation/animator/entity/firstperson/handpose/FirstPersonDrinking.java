@@ -13,7 +13,11 @@ import com.trainguy9512.locomotion.animation.pose.function.statemachine.*;
 import com.trainguy9512.locomotion.animation.util.Easing;
 import com.trainguy9512.locomotion.animation.util.TimeSpan;
 import com.trainguy9512.locomotion.animation.util.Transition;
+//? if >= 1.21.2 {
 import net.minecraft.core.component.DataComponents;
+//?} else {
+import net.minecraft.client.Minecraft;
+//?}
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
@@ -124,11 +128,20 @@ public class FirstPersonDrinking {
 
     public static void updateConsumptionSpeed(PoseTickEvaluationContext context, InteractionHand hand) {
         ItemStack item = context.getDriverValue(FirstPersonDrivers.getRenderedItemDriver(hand));
+        //? if >= 1.21.2 {
         if (!item.has(DataComponents.CONSUMABLE)) {
             return;
         }
         float speed = Objects.requireNonNull(item.get(DataComponents.CONSUMABLE)).consumeSeconds();
         speed = 1f / Math.max(speed, 0.1f);
+        //?} else {
+        var player = Minecraft.getInstance().player;
+        if (player == null) {
+            return;
+        }
+        int useDurationTicks = item.getItem().getUseDuration(item, player);
+        float speed = useDurationTicks <= 0 ? 1f : 20f / useDurationTicks;
+        //?}
         context.getDriver(FirstPersonDrivers.ITEM_CONSUMPTION_SPEED).setValue(speed);
     }
 

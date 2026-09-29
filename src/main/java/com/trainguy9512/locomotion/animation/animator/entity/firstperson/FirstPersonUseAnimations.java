@@ -13,7 +13,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HoneycombItem;
@@ -250,7 +249,7 @@ public class FirstPersonUseAnimations {
     public static void triggerUseAnimation(
             InteractionHand hand,
             UseAnimationType useAnimationType,
-            InteractionResult.SwingSource swingSource
+            boolean swingFromClient
     ) {
         var optional = JointAnimatorDispatcher.getInstance().getFirstPersonPlayerDataContainer();
         if (optional.isEmpty()) {
@@ -261,7 +260,7 @@ public class FirstPersonUseAnimations {
         dataContainer.getDriver(FirstPersonDrivers.getHasUsedItemDriver(hand)).trigger();
         dataContainer.getDriver(FirstPersonDrivers.LAST_USE_TYPE).setValue(useAnimationType);
         dataContainer.getDriver(FirstPersonDrivers.LAST_USED_HAND).setValue(hand);
-        dataContainer.getDriver(FirstPersonDrivers.LAST_USED_SWING_FROM_CLIENT).setValue(swingSource == InteractionResult.SwingSource.CLIENT);
+        dataContainer.getDriver(FirstPersonDrivers.LAST_USED_SWING_FROM_CLIENT).setValue(swingFromClient);
     }
 
     public static void updateUseAnimationHitResults(AnimationDataContainer dataContainer) {

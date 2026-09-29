@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render;
 
+//? if >= 1.21.11 {
+
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -46,3 +48,4 @@ public class MixinModelFeatureRenderer<S> {
     }
 
 }
+//?}

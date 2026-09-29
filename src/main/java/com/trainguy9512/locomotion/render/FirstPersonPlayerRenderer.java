@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.render;
 
+//? if >= 1.21.2 {
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.trainguy9512.locomotion.access.MatrixModelPart;
@@ -98,7 +100,7 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
         //? if >= 1.21.9 {
         AvatarRenderer<@NotNull AbstractClientPlayer> playerRenderer = this.entityRenderDispatcher.getPlayerRenderer(player);
         //?} else {
-        /*PlayerRenderer playerRenderer = (PlayerRenderer)this.entityRenderDispatcher.getRenderer(abstractClientPlayer);
+        /*PlayerRenderer playerRenderer = (PlayerRenderer)this.entityRenderDispatcher.getRenderer(player);
          *///?}
 
         // Posing the player model
@@ -159,7 +161,7 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
                             //? if >= 1.21.9 {
                             AvatarRenderer<AbstractClientPlayer> playerRenderer = this.entityRenderDispatcher.getPlayerRenderer(player);
                             //?} else {
-                            /*PlayerRenderer playerRenderer = (PlayerRenderer)this.entityRenderDispatcher.getRenderer(abstractClientPlayer);
+                            /*PlayerRenderer playerRenderer = (PlayerRenderer)this.entityRenderDispatcher.getRenderer(player);
                             *///?}
 
                             PlayerModel playerModel = playerRenderer.getModel();
@@ -404,3 +406,232 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
         return entityRenderDispatcher.getPlayerRenderer(minecraft.player).getModel();
     }
 }
+//?} else {
+/*
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import com.trainguy9512.locomotion.access.LegacyHumanoidModelAccess;
+import com.trainguy9512.locomotion.access.LegacyPlayerModelAccess;
+import com.trainguy9512.locomotion.access.MatrixModelPart;
+import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
+import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonDrivers;
+import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonJointAnimator;
+import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonGenericItems;
+import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonHandPoses;
+import com.trainguy9512.locomotion.animation.data.AnimationDataContainer;
+import com.trainguy9512.locomotion.animation.joint.JointChannel;
+import com.trainguy9512.locomotion.animation.pose.ModelPartSpacePose;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.PlayerSkin;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.PlayerModelPart;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import org.joml.Vector3f;
+
+import java.util.Objects;
+
+public class FirstPersonPlayerRenderer {
+
+    private final Minecraft minecraft;
+    private final EntityRenderDispatcher entityRenderDispatcher;
+    private final JointAnimatorDispatcher jointAnimatorDispatcher;
+
+    public static boolean IS_RENDERING_LOCOMOTION_FIRST_PERSON = false;
+    public static boolean SHOULD_FLIP_ITEM_TRANSFORM = false;
+    public static InteractionHand CURRENT_ITEM_INTERACTION_HAND = InteractionHand.MAIN_HAND;
+    public static float CURRENT_PARTIAL_TICKS = 0;
+
+    public FirstPersonPlayerRenderer(EntityRenderDispatcher entityRenderDispatcher) {
+        this.minecraft = Minecraft.getInstance();
+        this.entityRenderDispatcher = entityRenderDispatcher;
+        this.jointAnimatorDispatcher = JointAnimatorDispatcher.getInstance();
+    }
+
+    /**
+     * Draws Locomotion's animated arms and held items. Returns false if animation data has not
+     * been initialized yet so the caller can leave vanilla rendering intact for that frame.
+     */
+    public boolean render(float partialTicks, PoseStack poseStack, MultiBufferSource.BufferSource bufferSource, LocalPlayer player, int combinedLight) {
+        CURRENT_PARTIAL_TICKS = partialTicks;
+        AnimationDataContainer dataContainer = jointAnimatorDispatcher.getFirstPersonPlayerDataContainer().orElse(null);
+        ModelPartSpacePose animationPose = jointAnimatorDispatcher.getInterpolatedFirstPersonPlayerPose().orElse(null);
+        if (dataContainer == null || animationPose == null) {
+            return false;
+        }
+
+        boolean leftHanded = this.minecraft.options.mainHand().get() == HumanoidArm.LEFT;
+        InteractionHand rightArmHand = leftHanded ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        InteractionHand leftArmHand = leftHanded ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+
+        JointChannel rightArmPose = animationPose.getJointChannel(FirstPersonJointAnimator.RIGHT_ARM_JOINT);
+        JointChannel leftArmPose = animationPose.getJointChannel(FirstPersonJointAnimator.LEFT_ARM_JOINT);
+        JointChannel rightItemPose = animationPose.getJointChannel(FirstPersonJointAnimator.RIGHT_ITEM_JOINT);
+        JointChannel leftItemPose = animationPose.getJointChannel(FirstPersonJointAnimator.LEFT_ITEM_JOINT);
+
+        PlayerRenderer playerRenderer = (PlayerRenderer) this.entityRenderDispatcher.getRenderer(player);
+        PlayerModel playerModel = playerRenderer.getModel();
+        LegacyHumanoidModelAccess humanoidParts = (LegacyHumanoidModelAccess) (Object) playerModel;
+        LegacyPlayerModelAccess playerParts = (LegacyPlayerModelAccess) (Object) playerModel;
+        ModelPart bodyPart = humanoidParts.locomotion$getBody();
+        ModelPart rightArmPart = humanoidParts.locomotion$getRightArm();
+        ModelPart leftArmPart = humanoidParts.locomotion$getLeftArm();
+        ModelPart rightSleevePart = playerParts.locomotion$getRightSleeve();
+        ModelPart leftSleevePart = playerParts.locomotion$getLeftSleeve();
+        boolean bodyVisible = bodyPart.visible;
+        boolean leftSleeveVisible = leftSleevePart.visible;
+        boolean rightSleeveVisible = rightSleevePart.visible;
+        var rightArmPartPose = rightArmPart.storePose();
+        var leftArmPartPose = leftArmPart.storePose();
+        var rightSleevePartPose = rightSleevePart.storePose();
+        var leftSleevePartPose = leftSleevePart.storePose();
+
+        poseStack.pushPose();
+        try {
+            poseStack.mulPose(Axis.ZP.rotationDegrees(180));
+            rightArmPart.resetPose();
+            leftArmPart.resetPose();
+            rightSleevePart.resetPose();
+            leftSleevePart.resetPose();
+            ((MatrixModelPart) (Object) rightArmPart).locomotion$setMatrix(rightArmPose.getTransform());
+            ((MatrixModelPart) (Object) leftArmPart).locomotion$setMatrix(leftArmPose.getTransform());
+            bodyPart.visible = false;
+
+            this.renderArm(player, playerModel, HumanoidArm.LEFT, poseStack, bufferSource, combinedLight);
+            this.renderArm(player, playerModel, HumanoidArm.RIGHT, poseStack, bufferSource, combinedLight);
+
+            ItemStack rightItem = getItemStackInHandToRender(dataContainer, player, rightArmHand);
+            ItemStack leftItem = getItemStackInHandToRender(dataContainer, player, leftArmHand);
+            this.renderItem(player, rightItem, poseStack, rightItemPose, bufferSource, combinedLight, HumanoidArm.RIGHT, rightArmHand);
+            this.renderItem(player, leftItem, poseStack, leftItemPose, bufferSource, combinedLight, HumanoidArm.LEFT, leftArmHand);
+        } finally {
+            rightArmPart.loadPose(rightArmPartPose);
+            leftArmPart.loadPose(leftArmPartPose);
+            rightSleevePart.loadPose(rightSleevePartPose);
+            leftSleevePart.loadPose(leftSleevePartPose);
+            ((MatrixModelPart) (Object) rightArmPart).locomotion$setMatrix(null);
+            ((MatrixModelPart) (Object) leftArmPart).locomotion$setMatrix(null);
+            bodyPart.visible = bodyVisible;
+            leftSleevePart.visible = leftSleeveVisible;
+            rightSleevePart.visible = rightSleeveVisible;
+            poseStack.popPose();
+            IS_RENDERING_LOCOMOTION_FIRST_PERSON = false;
+            SHOULD_FLIP_ITEM_TRANSFORM = false;
+        }
+
+        bufferSource.endBatch();
+        return true;
+    }
+
+    private static ItemStack getItemStackInHandToRender(AnimationDataContainer dataContainer, AbstractClientPlayer player, InteractionHand hand) {
+        ItemStack renderedItem = dataContainer.getDriverValue(FirstPersonDrivers.getRenderedItemDriver(hand));
+        ItemStack currentItem = player.getItemInHand(hand);
+        if (!ItemStack.isSameItem(currentItem, renderedItem)) {
+            return renderedItem;
+        }
+        if (ItemStack.isSameItemSameComponents(currentItem, renderedItem)) {
+            return currentItem;
+        }
+        for (DataComponentType<?> componentType : currentItem.getComponents().keySet()) {
+            if (componentType == DataComponents.DAMAGE) {
+                continue;
+            }
+            if (!renderedItem.getComponents().has(componentType)
+                    || !Objects.equals(renderedItem.get(componentType), currentItem.get(componentType))) {
+                return renderedItem;
+            }
+        }
+        return currentItem;
+    }
+
+    private void renderArm(AbstractClientPlayer player, PlayerModel model, HumanoidArm arm, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+        PlayerSkin skin = player.getSkin();
+        boolean leftArm = arm == HumanoidArm.LEFT;
+        boolean slimArms = skin.model() == PlayerSkin.Model.SLIM;
+        LegacyHumanoidModelAccess humanoidParts = (LegacyHumanoidModelAccess) (Object) model;
+        LegacyPlayerModelAccess playerParts = (LegacyPlayerModelAccess) (Object) model;
+        ModelPart armPart = leftArm ? humanoidParts.locomotion$getLeftArm() : humanoidParts.locomotion$getRightArm();
+        ModelPart sleevePart = leftArm ? playerParts.locomotion$getLeftSleeve() : playerParts.locomotion$getRightSleeve();
+        PlayerModelPart sleeveSetting = leftArm ? PlayerModelPart.LEFT_SLEEVE : PlayerModelPart.RIGHT_SLEEVE;
+
+        poseStack.pushPose();
+        try {
+            if (slimArms) {
+                poseStack.translate((leftArm ? 1 : -1) * 0.5f / 16f, 0, 0);
+            }
+            sleevePart.visible = player.isModelPartShown(sleeveSetting);
+            armPart.render(poseStack, bufferSource.getBuffer(RenderType.entityTranslucent(skin.texture())), packedLight, OverlayTexture.NO_OVERLAY);
+        } finally {
+            poseStack.popPose();
+        }
+    }
+
+    private void renderItem(LivingEntity entity, ItemStack stack, PoseStack poseStack, JointChannel pose, MultiBufferSource bufferSource, int packedLight, HumanoidArm side, InteractionHand hand) {
+        if (stack.isEmpty()) {
+            return;
+        }
+        FirstPersonDrivers.getHandPoseDriver(hand);
+        var handPoseId = this.jointAnimatorDispatcher.getFirstPersonPlayerDataContainer()
+                .map(data -> data.getDriverValue(FirstPersonDrivers.getHandPoseDriver(hand)))
+                .orElse(FirstPersonHandPoses.getFallback());
+        FirstPersonHandPoses.HandPoseDefinition handPose = FirstPersonHandPoses.getOrThrowFromIdentifier(handPoseId);
+        var genericPoseId = this.jointAnimatorDispatcher.getFirstPersonPlayerDataContainer()
+                .map(data -> data.getDriverValue(FirstPersonDrivers.getGenericItemPoseDriver(hand)))
+                .orElse(FirstPersonGenericItems.getFallback());
+        FirstPersonGenericItems.GenericItemPoseDefinition genericPose = FirstPersonGenericItems.getOrThrowFromIdentifier(genericPoseId);
+        var itemRenderType = handPoseId == FirstPersonHandPoses.GENERIC_ITEM ? genericPose.itemRenderType() : handPose.itemRenderType();
+        ItemDisplayContext displayContext = itemRenderType.getItemDisplayContext(side);
+
+        IS_RENDERING_LOCOMOTION_FIRST_PERSON = true;
+        CURRENT_ITEM_INTERACTION_HAND = hand;
+        SHOULD_FLIP_ITEM_TRANSFORM = itemRenderType.isMirrored() && side == HumanoidArm.LEFT;
+        poseStack.pushPose();
+        try {
+            pose.transformPoseStack(poseStack, 16f);
+            this.minecraft.getItemRenderer().renderStatic(
+                    entity,
+                    stack,
+                    displayContext,
+                    side == HumanoidArm.LEFT,
+                    poseStack,
+                    bufferSource,
+                    entity.level(),
+                    packedLight,
+                    OverlayTexture.NO_OVERLAY,
+                    entity.getId() + displayContext.ordinal()
+            );
+        } finally {
+            poseStack.popPose();
+            SHOULD_FLIP_ITEM_TRANSFORM = false;
+            IS_RENDERING_LOCOMOTION_FIRST_PERSON = false;
+        }
+    }
+
+    public void transformCamera(PoseStack poseStack) {
+        if (this.minecraft.options.getCameraType().isFirstPerson()) {
+            this.jointAnimatorDispatcher.getInterpolatedFirstPersonPlayerPose().ifPresent(animationPose -> {
+                JointChannel cameraPose = animationPose.getJointChannel(FirstPersonJointAnimator.CAMERA_JOINT);
+                Vector3f cameraRotation = cameraPose.getEulerRotationZYX();
+                cameraRotation.z *= -1;
+                cameraPose.rotate(cameraRotation, JointChannel.TransformSpace.LOCAL, JointChannel.TransformType.REPLACE);
+                cameraPose.translate(cameraPose.getTranslation().mul(1, 1, -1), JointChannel.TransformSpace.COMPONENT, JointChannel.TransformType.REPLACE);
+                cameraPose.transformPoseStack(poseStack, 16f);
+            });
+        }
+    }
+}
+*///?}

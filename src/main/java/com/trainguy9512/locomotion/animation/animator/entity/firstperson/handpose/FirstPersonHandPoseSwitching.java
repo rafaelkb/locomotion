@@ -14,7 +14,7 @@ import com.trainguy9512.locomotion.animation.util.Easing;
 import com.trainguy9512.locomotion.animation.util.TimeSpan;
 import com.trainguy9512.locomotion.animation.util.Transition;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.TypedDataComponent;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
@@ -279,14 +279,14 @@ public class FirstPersonHandPoseSwitching {
         if (!itemPreviousTick.is(itemCurrentTick.getItem())) {
             return true;
         }
-        for (TypedDataComponent<?> dataComponent : itemCurrentTick.getComponents()) {
-            if (dataComponent.type() == DataComponents.DAMAGE) {
+        for (DataComponentType<?> componentType : itemCurrentTick.getComponents().keySet()) {
+            if (componentType == DataComponents.DAMAGE) {
                 continue;
             }
-            if (!itemPreviousTick.getComponents().has(dataComponent.type())) {
+            if (!itemPreviousTick.getComponents().has(componentType)) {
                 return true;
             }
-            if (!Objects.equals(itemPreviousTick.get(dataComponent.type()), dataComponent.value())) {
+            if (!Objects.equals(itemPreviousTick.get(componentType), itemCurrentTick.get(componentType))) {
                 return true;
             }
         }

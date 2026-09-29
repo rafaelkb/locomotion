@@ -99,7 +99,7 @@ dependencies {
 }
 
 tasks.processResources {
-    applyProperties(project, listOf("META-INF/neoforge.mods.toml", "${prop("mod.id")}-neoforge.mixin.json", "pack.mcmeta"))
+    applyProperties(project, listOf("META-INF/neoforge.mods.toml", "${prop("mod.id")}-neoforge.mixins.json", "pack.mcmeta"))
 }
 
 tasks.shadowJar {

@@ -23,7 +23,8 @@ stonecutter {
         vcsVersion = "1.21.11"
         branch("fabric")
         //branch("forge") { versions("1.21.5") }+
-        branch("neoforge") { versions("1.21.11") }
+        // Keep the current release on the active version while also building a 1.21.1 port.
+        branch("neoforge") { versions("1.21.11", "1.21.1") }
     }
 }
 

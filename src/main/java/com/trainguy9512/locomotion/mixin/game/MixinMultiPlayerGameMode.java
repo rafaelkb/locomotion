@@ -3,6 +3,7 @@ package com.trainguy9512.locomotion.mixin.game;
 import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonDrivers;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonUseAnimations;
+import com.trainguy9512.locomotion.util.LocomotionMultiVersionWrappers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
 import net.minecraft.client.player.LocalPlayer;
@@ -95,11 +96,11 @@ public class MixinMultiPlayerGameMode {
             at = @At("RETURN")
     )
     public void triggerUseItemAnimation(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
-        if (cir.getReturnValue() instanceof InteractionResult.Success success) {
+        if (LocomotionMultiVersionWrappers.shouldTriggerClientSwing(cir.getReturnValue())) {
             FirstPersonUseAnimations.triggerUseAnimation(
                     hand,
                     FirstPersonUseAnimations.UseAnimationType.USE_ITEM,
-                    success.swingSource()
+                    true
             );
         }
     }
@@ -109,11 +110,11 @@ public class MixinMultiPlayerGameMode {
             at = @At("RETURN")
     )
     public void triggerUseItemOnAnimation(LocalPlayer player, InteractionHand hand, BlockHitResult result, CallbackInfoReturnable<InteractionResult> cir) {
-        if (cir.getReturnValue() instanceof InteractionResult.Success success) {
+        if (LocomotionMultiVersionWrappers.shouldTriggerClientSwing(cir.getReturnValue())) {
             FirstPersonUseAnimations.triggerUseAnimation(
                     hand,
                     FirstPersonUseAnimations.UseAnimationType.USE_ITEM_ON_BLOCK,
-                    success.swingSource()
+                    true
             );
         }
     }
@@ -123,11 +124,11 @@ public class MixinMultiPlayerGameMode {
             at = @At("RETURN")
     )
     public void triggerInteractAtAnimation(Player player, Entity target, EntityHitResult ray, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
-        if (cir.getReturnValue() instanceof InteractionResult.Success success) {
+        if (LocomotionMultiVersionWrappers.shouldTriggerClientSwing(cir.getReturnValue())) {
             FirstPersonUseAnimations.triggerUseAnimation(
                     hand,
                     FirstPersonUseAnimations.UseAnimationType.INTERACT_AT_ENTITY,
-                    success.swingSource()
+                    true
             );
         }
     }
@@ -137,11 +138,11 @@ public class MixinMultiPlayerGameMode {
             at = @At("RETURN")
     )
     public void triggerInteractAnimation(Player player, Entity target, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
-        if (cir.getReturnValue() instanceof InteractionResult.Success success) {
+        if (LocomotionMultiVersionWrappers.shouldTriggerClientSwing(cir.getReturnValue())) {
             FirstPersonUseAnimations.triggerUseAnimation(
                     hand,
                     FirstPersonUseAnimations.UseAnimationType.INTERACT_ENTITY,
-                    success.swingSource()
+                    true
             );
         }
     }

@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render.layer;
 
+//? if >= 1.21.11 {
+
 import com.trainguy9512.locomotion.access.EntityRenderStateAccess;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -39,3 +41,4 @@ public abstract class MixinElytraLayer<T extends LivingEntity, S extends Humanoi
         return ((EntityRenderStateAccess)livingEntityRenderState).animationOverhaul$getInterpolatedAnimationPose() != null;
     }
 }
+//?}

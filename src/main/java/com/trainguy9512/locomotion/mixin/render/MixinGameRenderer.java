@@ -25,7 +25,7 @@ public abstract class MixinGameRenderer {
      */
     @Inject(
             method = "renderLevel",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GameRenderer;extractCamera(F)V")
+            at = @At("HEAD")
     )
     private void computePosePriorToRendering(DeltaTracker deltaTracker, CallbackInfo ci){
         if (LocomotionMain.CONFIG.data().firstPersonPlayer.enableRenderer) {
