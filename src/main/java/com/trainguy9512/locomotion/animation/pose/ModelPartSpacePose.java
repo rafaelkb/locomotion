@@ -53,10 +53,9 @@ public class ModelPartSpacePose extends Pose {
         //?}
     }
 
+    // No-op on 1.21.2+: modern model rendering resets poses before applying animation transforms.
     public static void clearModelPartMatrices(Object modelObject) {
-        //? if >= 1.21.2 {
-        // No-op: modern model rendering resets poses before applying animation transforms.
-        //?} else {
+        //? if < 1.21.2 {
         legacyPlayerModelParts(modelObject).values().forEach(modelPart ->
                 ((MatrixModelPart)(Object) modelPart).locomotion$setMatrix(null)
         );

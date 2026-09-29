@@ -341,8 +341,9 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
 
                     //?} else if >= 1.21.5 {
                     /*this.itemRenderer.renderStatic(entity, itemStack, displayContext, poseStack, bufferSource, entity.level(), combinedLight, OverlayTexture.NO_OVERLAY, entity.getId() + displayContext.ordinal());
-                     *///?} else
+                     *///?} else {
                     /*this.itemRenderer.renderStatic(entity, itemStackToRender, displayContext, side == HumanoidArm.LEFT, poseStack, buffer, entity.level(), combinedLight, OverlayTexture.NO_OVERLAY, entity.getId() + displayContext.ordinal());*/
+                    //?}
                 }
             }
             SHOULD_FLIP_ITEM_TRANSFORM = false;

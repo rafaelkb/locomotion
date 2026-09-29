@@ -86,16 +86,12 @@ jobs:
           if [ -d build/libs ]; then cp -r build/libs/. "$out/libs/"; fi
           echo "$sha $run_id" > "$out/COMMIT"
 
-          # Publish the Stonecutter-processed sources for the files the compiler
-          # complained about, so failures can be diagnosed without runner logs.
+          # Publish the Stonecutter-processed sources so a compilation failure can be
+          # diagnosed without access to the runner logs.
           mkdir -p "$out/chiseledSrc"
-          find versions -path '*/build/chiseledSrc/*' \
-            \( -name 'FirstPersonPlayerRenderer.java' -o -name 'ModelPartSpacePose.java' \) \
-            -print0 2>/dev/null | while IFS= read -r -d '' f; do
-              dest="$out/chiseledSrc/$(echo "$f" | sed 's|versions/||; s|/build/chiseledSrc/main/java/com/trainguy9512/locomotion/|__|; s|/|__|g')"
-              cp "$f" "$dest"
-            done
-          ls -l "$out/chiseledSrc" || true
+          find versions -path '*/build/chiseledSrc/*' -name '*.java' -print0 2>/dev/null \
+            | xargs -0 -r cp --parents -t "$out/chiseledSrc"
+          echo "captured $(find "$out/chiseledSrc" -name '*.java' | wc -l) processed sources"
 
           cd "$out"
           git init -q .
