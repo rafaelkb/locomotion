@@ -16,9 +16,15 @@ public class GsonConfiguration {
     private static Gson GSON = createInternal();
 
     private static Gson createInternal() {
-        return new GsonBuilder()
-                .setStrictness(Strictness.STRICT)
-                .setPrettyPrinting()
+        GsonBuilder builder = new GsonBuilder()
+                .setPrettyPrinting();
+        // Gson 2.10.1 (bundled by Minecraft 1.21.1) predates Strictness.
+        //? if >= 1.21.2 {
+        builder.setStrictness(Strictness.STRICT);
+        //?} else {
+        builder.setLenient();
+        //?}
+        return builder
                 .registerTypeAdapter(Vector3f.class, vector3fDeserializer())
                 .registerTypeAdapter(Quaternionf.class, quaternionDeserializer())
                 .registerTypeAdapter(AnimationSequence.class, new AnimationSequenceDeserializer())

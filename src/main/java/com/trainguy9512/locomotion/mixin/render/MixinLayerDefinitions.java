@@ -26,38 +26,9 @@ public class MixinLayerDefinitions {
     private static void getCreatedModels(CallbackInfoReturnable<Map<ModelLayerLocation, LayerDefinition>> cir) {
         Logger logger = LocomotionMain.DEBUG_LOGGER;
 
-        if (true) {
-            return;
-        }
-
-        Map<ModelLayerLocation, LayerDefinition> models = cir.getReturnValue();
-//        logger.info(modelJson);
-        String filePath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-        for (ModelLayerLocation location : models.keySet()) {
-            LayerDefinition layerDefinition = models.get(location);
-
-            try {
-
-                FileWriter writer = new FileWriter(filePath + "/models/" + location.model().toDebugFileName() + "_" + location.layer() + ".json");
-                GsonConfiguration.getInstance().toJson(layerDefinition, writer);
-                writer.close();
-            } catch (IOException e) {
-                logger.error(e.getMessage());
-            }
-        }
-//        for (ModelLayerLocation location : models.keySet()) {
-//            logger.info("--------");
-//            logger.info(location.model());
-//
-//            LayerDefinition layerDefinition = models.get(location);
-//            layerDefinition.apply(MeshTransformer.IDENTITY);
-//            MeshDefinition meshDefinition = MeshGeneratorUtils.LAST_VISITED_MESH_DEFINITION;
-//            PartDefinition root = meshDefinition.getRoot();
-//
-//            ModelPart bakedModelPart = root.bake(64, 64);
-//            String modelPartJson = GsonConfiguration.getInstance().toJson(bakedModelPart);
-//            logger.info(modelPartJson);
-//            logger.info("--------");
-//        }
+        // This hook is intentionally disabled. Keep the mixin as a no-op so
+        // the debug exporter does not tie compilation to ModelLayerLocation's
+        // version-specific accessors.
+        return;
     }
 }

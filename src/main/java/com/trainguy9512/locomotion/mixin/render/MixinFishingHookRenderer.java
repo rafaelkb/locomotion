@@ -73,8 +73,17 @@ public abstract class MixinFishingHookRenderer {
                             .mul(animationPose.getJointChannel(itemJoint).getTransform())
                             .translate(0, 10, 5);
 
-                    float playerRotationX = player.getXRot(partialTick) * Mth.DEG_TO_RAD;
-                    float playerRotationY = player.getYRot(partialTick) * -Mth.DEG_TO_RAD;
+                    float playerRotationX;
+                    float playerRotationY;
+                    // 1.21.1 exposes interpolated view rotations under
+                    // getViewXRot/getViewYRot; newer versions use getXRot/getYRot.
+                    //? if >= 1.21.2 {
+                    playerRotationX = player.getXRot(partialTick) * Mth.DEG_TO_RAD;
+                    playerRotationY = player.getYRot(partialTick) * -Mth.DEG_TO_RAD;
+                    //?} else {
+                    playerRotationX = player.getViewXRot(partialTick) * Mth.DEG_TO_RAD;
+                    playerRotationY = player.getViewYRot(partialTick) * -Mth.DEG_TO_RAD;
+                    //?}
                     Quaternionf playerRotation = new Quaternionf().rotateY(playerRotationY).rotateX(playerRotationX);
                     Matrix4f playerTransform = new Matrix4f()
                             .translate(entityRenderDispatcher.camera.position().toVector3f())
