@@ -463,10 +463,8 @@ public class FirstPersonPlayerRenderer {
         this.jointAnimatorDispatcher = JointAnimatorDispatcher.getInstance();
     }
 
-    /**
-     * Draws Locomotion's animated arms and held items. Returns false if animation data has not
-     * been initialized yet so the caller can leave vanilla rendering intact for that frame.
-     */
+    // Draws Locomotion's animated arms and held items. Returns false if animation data has not
+    // been initialized yet so the caller can leave vanilla rendering intact for that frame.
     public boolean render(float partialTicks, PoseStack poseStack, MultiBufferSource.BufferSource bufferSource, LocalPlayer player, int combinedLight) {
         CURRENT_PARTIAL_TICKS = partialTicks;
         AnimationDataContainer dataContainer = jointAnimatorDispatcher.getFirstPersonPlayerDataContainer().orElse(null);
