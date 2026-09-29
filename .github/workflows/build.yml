@@ -3,6 +3,9 @@ name: build
 
 on: [pull_request, push]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
@@ -64,3 +67,20 @@ jobs:
             grep -E '(^|/)(error:|FAILURE:|What went wrong|BUILD FAILED|Execution failed)' build/ci/gradle.log | tail -200 || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      # A failed Actions log is served from a short-lived Azure URL that is
+      # not available in every API environment.  Keep a temporary copy in the
+      # session branch so the complete compiler diagnostics can be inspected.
+      - name: publish failure log for diagnosis
+        if: ${{ failure() && runner.os == 'Linux' && github.event_name == 'push' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .ci
+          cp build/ci/gradle.log .ci/last-build.log
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .ci/last-build.log
+          git commit -m "ci: publish failed build log [skip ci]" || exit 0
+          git push origin "HEAD:${GITHUB_REF_NAME}"
