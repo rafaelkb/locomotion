@@ -22,7 +22,7 @@ public class MixinItemTransform {
             //? if >= 1.21.2 {
             pose.rotate(Axis.YP.rotation(Mth.PI));
             //?} else {
-            /*pose.mulPose(Axis.YP.rotation(Mth.PI));*/
+            /*pose.pose().rotate(Axis.YP.rotation(Mth.PI));*/
             //?}
         }
     }

@@ -56,17 +56,14 @@ public class PartPoseDeserializer implements JsonDeserializer<PartPose> {
                 scale.z()
         );
         //?} else {
-        /*PartPose partPose = new PartPose(
+        // 1.21.1's PartPose has no scale and only a private constructor.
+        /*return PartPose.offsetAndRotation(
                 translation.x(),
                 translation.y(),
                 translation.z(),
                 rotation.x(),
                 rotation.y(),
                 rotation.z()
-        );
-        partPose.xScale = scale.x();
-        partPose.yScale = scale.y();
-        partPose.zScale = scale.z();
-        return partPose;*///?}
+        );*///?}
     }
 }

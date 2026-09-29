@@ -17,6 +17,8 @@ allprojects { p ->
             'net.minecraft.client.Camera',
             'net.minecraft.client.model.ModelLayerLocation',
             'com.google.gson.Strictness',
+            'com.mojang.blaze3d.vertex.PoseStack',
+            'com.mojang.blaze3d.vertex.PoseStack$Pose',
         ]
         outputs.upToDateWhen { false }
         doLast {

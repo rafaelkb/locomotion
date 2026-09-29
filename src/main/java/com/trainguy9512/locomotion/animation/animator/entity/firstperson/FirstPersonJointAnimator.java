@@ -308,8 +308,6 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
                 && !player.isInWater()
                 //? if >= 1.21.2 {
                 && !player.isMobilityRestricted()
-                //?} else {
-                /*&& !player.isImmobile()*/
                 //?}
                 && !player.isPassenger()
                 && !player.isSprinting();

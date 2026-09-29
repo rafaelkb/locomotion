@@ -84,7 +84,7 @@ public class LocomotionResources implements PreparableReloadListener {
         CompletableFuture<Map<Identifier, AnimationSequence>> loadedAnimationSequences = loadAnimationSequences(resourceManager, backgroundExecutor);
 
         return CompletableFuture.allOf(loadedJointSkeletons, loadedAnimationSequences)
-                .thenCompose(barrier::waitFor)
+                .thenCompose(barrier::wait)
                 .thenCompose(voided -> applyReloadedData(loadedJointSkeletons, loadedAnimationSequences));
     }*///?}
 
