@@ -34,39 +34,35 @@ public abstract class MixinItemInHandLayer<T extends LivingEntity, S extends Arm
 
             //TODO: Redo how hand stuff works, add override functions to living entity animators. (2025 update: what does this mean?)
             //update: gosh darnit 1.20 broke something else with this mixin
-            /*
-            poseStack.popPose();
-            poseStack.pushPose();
-            ((ArmedModel)this.getParentModel()).translateToHand(humanoidArm, poseStack);
-            poseStack.translate((humanoidArm == HumanoidArm.LEFT ? 1 : -1) /16F, 8/16F, 0);
-
-            Enum<> locatorIdentifier = humanoidArm == HumanoidArm.LEFT ? PlayerPartAnimator.ModelPartLocators.leftHand : PlayerPartAnimator.ModelPartLocators.rightHand;
-            //AnimatorDispatcher.INSTANCE.getBakedPose(livingEntity.getUUID()).getLocator(locatorIdentifier, Minecraft.getInstance().getFrameTime()).translateAndRotatePoseStack(poseStack);
-
-            BakedAnimationPose<L> bakedAnimationPose = AnimatorDispatcher.INSTANCE.getBakedPose(livingEntity.getUUID());
-            bakedAnimationPose.getBlendedPose(Minecraft.getInstance().getFrameTime()).getLocatorPose(locatorIdentifier).translateAndRotatePoseStack(poseStack);
-
-        poseStack.mulPose(Axis.XP.rotationDegrees(-90));
-            poseStack.mulPose(Axis.YP.rotationDegrees(180));
-
-            //poseStack.mulPose(Vector3f.XP.rotationDegrees(Util.getMillis() / 10F));
-            poseStack.translate(0, 2/16F, -2/16F);
-
-             */
+            // poseStack.popPose();
+            // poseStack.pushPose();
+            // ((ArmedModel)this.getParentModel()).translateToHand(humanoidArm, poseStack);
+            // poseStack.translate((humanoidArm == HumanoidArm.LEFT ? 1 : -1) /16F, 8/16F, 0);
+//
+            // Enum<> locatorIdentifier = humanoidArm == HumanoidArm.LEFT ? PlayerPartAnimator.ModelPartLocators.leftHand : PlayerPartAnimator.ModelPartLocators.rightHand;
+            // //AnimatorDispatcher.INSTANCE.getBakedPose(livingEntity.getUUID()).getLocator(locatorIdentifier, Minecraft.getInstance().getFrameTime()).translateAndRotatePoseStack(poseStack);
+//
+            // BakedAnimationPose<L> bakedAnimationPose = AnimatorDispatcher.INSTANCE.getBakedPose(livingEntity.getUUID());
+            // bakedAnimationPose.getBlendedPose(Minecraft.getInstance().getFrameTime()).getLocatorPose(locatorIdentifier).translateAndRotatePoseStack(poseStack);
+//
+        // poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+            // poseStack.mulPose(Axis.YP.rotationDegrees(180));
+//
+            // //poseStack.mulPose(Vector3f.XP.rotationDegrees(Util.getMillis() / 10F));
+            // poseStack.translate(0, 2/16F, -2/16F);
+//
 //        }
 //    }
     private boolean shouldTransformItemInHand(LivingEntityRenderState livingEntityRenderState){
         return false;
-        /*
-        BakedAnimationPose bakedPose = AnimatorDispatcher.INSTANCE.getBakedPose(livingEntity.getUUID());
-        if(bakedPose != null){
-            if(bakedPose.containsLocator("leftHand") && bakedPose.containsLocator("rightHand")){
-                return true;
-            }
-        }
-        return false;
-
-         */
+        // BakedAnimationPose bakedPose = AnimatorDispatcher.INSTANCE.getBakedPose(livingEntity.getUUID());
+        // if(bakedPose != null){
+            // if(bakedPose.containsLocator("leftHand") && bakedPose.containsLocator("rightHand")){
+                // return true;
+            // }
+        // }
+        // return false;
+//
     }
 }
 //?}

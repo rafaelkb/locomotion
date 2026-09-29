@@ -20,9 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CrossbowPull.class)
 public class MixinCrossbowPull {
 
-    /**
-     * Modifies the "Crossbow Pull" item model property to sync up with Locomotion's first person animations rather than how it's calculated in vanilla.
-     */
+     // Modifies the "Crossbow Pull" item model property to sync up with Locomotion's first person animations rather than how it's calculated in vanilla.
     @Inject(
             method = "get",
             at = @At("HEAD"),

@@ -19,23 +19,21 @@ public abstract class MixinElytraLayer<T extends LivingEntity, S extends Humanoi
         super(renderLayerParent);
     }
 
-    /*
-    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/HumanoidRenderState;FF)V", at = @At("HEAD"))
-    private void transformElytra(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, S humanoidRenderState, float f, float g, CallbackInfo ci){
-        if(this.getParentModel() instanceof HumanoidModel && isValidForElytraTransformation(humanoidRenderState)){
-            poseStack.pushPose();
-            ModelPart body = ((HumanoidModel<?>) this.getParentModel()).body;
-            body.translateAndRotate(poseStack);
-        }
-    }
-
-    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/HumanoidRenderState;FF)V", at = @At("RETURN"))
-    private void transformElytraFinalized(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, S humanoidRenderState, float f, float g, CallbackInfo ci){
-        if(this.getParentModel() instanceof HumanoidModel && isValidForElytraTransformation(humanoidRenderState)){
-            poseStack.popPose();
-        }
-    }
-     */
+    // @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/HumanoidRenderState;FF)V", at = @At("HEAD"))
+    // private void transformElytra(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, S humanoidRenderState, float f, float g, CallbackInfo ci){
+        // if(this.getParentModel() instanceof HumanoidModel && isValidForElytraTransformation(humanoidRenderState)){
+            // poseStack.pushPose();
+            // ModelPart body = ((HumanoidModel<?>) this.getParentModel()).body;
+            // body.translateAndRotate(poseStack);
+        // }
+    // }
+//
+    // @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/HumanoidRenderState;FF)V", at = @At("RETURN"))
+    // private void transformElytraFinalized(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, S humanoidRenderState, float f, float g, CallbackInfo ci){
+        // if(this.getParentModel() instanceof HumanoidModel && isValidForElytraTransformation(humanoidRenderState)){
+            // poseStack.popPose();
+        // }
+    // }
 
     private boolean isValidForElytraTransformation(LivingEntityRenderState livingEntityRenderState){
         return ((EntityRenderStateAccess)livingEntityRenderState).animationOverhaul$getInterpolatedAnimationPose() != null;

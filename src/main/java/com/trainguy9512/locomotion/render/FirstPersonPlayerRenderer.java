@@ -97,11 +97,7 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
         JointChannel itemPose = pose.getJointChannel(FirstPersonJointAnimator.getItemJoint(side));
 
 
-        //? if >= 1.21.9 {
         AvatarRenderer<@NotNull AbstractClientPlayer> playerRenderer = this.entityRenderDispatcher.getPlayerRenderer(player);
-        //?} else {
-        /*PlayerRenderer playerRenderer = (PlayerRenderer)this.entityRenderDispatcher.getRenderer(player);
-         *///?}
 
         // Posing the player model
         PlayerModel playerModel = playerRenderer.getModel();
@@ -158,11 +154,7 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
 //                            poseStack.mulPose(Axis.YP.rotationDegrees(-player.getViewYRot(partialTicks)));
 //                            poseStack.mulPose(Axis.XP.rotationDegrees(-player.getViewXRot(partialTicks)));
 
-                            //? if >= 1.21.9 {
                             AvatarRenderer<AbstractClientPlayer> playerRenderer = this.entityRenderDispatcher.getPlayerRenderer(player);
-                            //?} else {
-                            /*PlayerRenderer playerRenderer = (PlayerRenderer)this.entityRenderDispatcher.getRenderer(player);
-                            *///?}
 
                             PlayerModel playerModel = playerRenderer.getModel();
                             playerModel.resetPose();
@@ -332,17 +324,11 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
             switch (renderType) {
                 case MAP -> this.renderMap(nodeCollector, poseStack, itemStack, combinedLight);
                 case THIRD_PERSON_ITEM, MIRRORED_THIRD_PERSON_ITEM, ON_SHELF -> {
-                    //? if >= 1.21.9 {
 
                     ItemDisplayContext displayContext = renderType.getItemDisplayContext(side);
                     ItemStackRenderState itemStackRenderState = new ItemStackRenderState();
                     this.itemModelResolver.updateForTopItem(itemStackRenderState, itemStack, displayContext, entity.level(), entity, entity.getId() + displayContext.ordinal());
                     itemStackRenderState.submit(poseStack, nodeCollector, combinedLight, OverlayTexture.NO_OVERLAY, 0);
-
-                    //?} else if >= 1.21.5 {
-                    /*this.itemRenderer.renderStatic(entity, itemStack, displayContext, poseStack, bufferSource, entity.level(), combinedLight, OverlayTexture.NO_OVERLAY, entity.getId() + displayContext.ordinal());
-                     *///?} else
-                    /*this.itemRenderer.renderStatic(entity, itemStackToRender, displayContext, side == HumanoidArm.LEFT, poseStack, buffer, entity.level(), combinedLight, OverlayTexture.NO_OVERLAY, entity.getId() + displayContext.ordinal());*/
                 }
             }
             SHOULD_FLIP_ITEM_TRANSFORM = false;
@@ -462,10 +448,8 @@ public class FirstPersonPlayerRenderer {
         this.jointAnimatorDispatcher = JointAnimatorDispatcher.getInstance();
     }
 
-    /**
-     * Draws Locomotion's animated arms and held items. Returns false if animation data has not
-     * been initialized yet so the caller can leave vanilla rendering intact for that frame.
-     */
+    // Draws Locomotion's animated arms and held items. Returns false if animation data has not
+    // been initialized yet so the caller can leave vanilla rendering intact for that frame.
     public boolean render(float partialTicks, PoseStack poseStack, MultiBufferSource.BufferSource bufferSource, LocalPlayer player, int combinedLight) {
         CURRENT_PARTIAL_TICKS = partialTicks;
         AnimationDataContainer dataContainer = jointAnimatorDispatcher.getFirstPersonPlayerDataContainer().orElse(null);
