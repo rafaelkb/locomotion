@@ -13,6 +13,9 @@ jobs:
   neoforge:
     name: NeoForge
     runs-on: ubuntu-latest
+    # This repository is a fork, so the default token is read-only.
+    permissions:
+      contents: write
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -38,6 +41,15 @@ jobs:
           set -o pipefail
           ./gradlew --continue --stacktrace chiseledBuildNeoforge 2>&1 | tee build.log
 
+      - name: surface the gradle failure as annotations
+        if: always()
+        run: |
+          [ -f build.log ] || exit 0
+          grep -E '^e: |^w: |error: |^\* What went wrong|^\* Where|Could not |Caused by: ' build.log \
+            | head -80 | while IFS= read -r line; do echo "::error::${line}"; done
+          awk '/^FAILURE: Build failed/{flag=1} flag' build.log | head -60 \
+            | while IFS= read -r line; do echo "::error::${line}"; done
+
       - name: summarise built jars
         if: always()
         run: |
@@ -61,22 +73,26 @@ jobs:
 
       - name: publish log and jars to the ci-logs branch
         if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
+          set -x
           sha=$(git rev-parse --short HEAD)
           run_id=${{ github.run_id }}
 
-          staging=$(mktemp -d)
-          if [ -f build.log ]; then cp build.log "$staging/"; else echo "no build.log produced" > "$staging/build.log"; fi
-          mkdir -p "$staging/libs"
-          if [ -d build/libs ]; then cp -r build/libs/. "$staging/libs/"; fi
+          out=$(mktemp -d)/out
+          mkdir -p "$out/libs"
+          if [ -f build.log ]; then cp build.log "$out/"; else echo "no build.log produced" > "$out/build.log"; fi
+          if [ -d build/libs ]; then cp -r build/libs/. "$out/libs/"; fi
+          echo "$sha $run_id" > "$out/COMMIT"
 
-          git checkout --orphan ci-logs-scratch
-          git rm -rq . || true
-          cp -r "$staging"/. .
+          cd "$out"
+          git init -q .
+          git checkout -q -b ci-logs
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -q -m "build log for $sha (run $run_id)"
-          git push --force origin HEAD:refs/heads/ci-logs
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}"
+          git push --force origin ci-logs 2>&1 | tee /tmp/push.log
+          while IFS= read -r line; do echo "::error::push: ${line}"; done < /tmp/push.log
