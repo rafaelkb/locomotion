@@ -24,7 +24,7 @@ public class ModelPartSpacePose extends Pose {
         // The generic Model root API was added in 1.21.2. The legacy renderer only has a
         // registered third-person player animator, whose model parts are exposed by accessors.
         //? if >= 1.21.2 {
-        Model<?> model = (Model<?>) modelObject;
+        /*Model<?> model = (Model<?>) modelObject;
         model.resetPose();
 
         JointSkeleton jointSkeleton = this.getJointSkeleton();
@@ -38,7 +38,7 @@ public class ModelPartSpacePose extends Pose {
                 }
             }
         });
-        //?} else {
+        *///?} else {
         Map<String, ModelPart> partLookup = legacyPlayerModelParts(modelObject);
         if (!partLookup.isEmpty()) {
             JointSkeleton jointSkeleton = this.getJointSkeleton();
@@ -55,7 +55,8 @@ public class ModelPartSpacePose extends Pose {
 
     public static void clearModelPartMatrices(Object modelObject) {
         //? if >= 1.21.2 {
-        //?} else {
+        /*// No-op: modern model rendering resets poses before applying animation transforms.
+        *///?} else {
         legacyPlayerModelParts(modelObject).values().forEach(modelPart ->
                 ((MatrixModelPart)(Object) modelPart).locomotion$setMatrix(null)
         );
@@ -64,8 +65,8 @@ public class ModelPartSpacePose extends Pose {
 
     private static Map<String, ModelPart> legacyPlayerModelParts(Object modelObject) {
         //? if >= 1.21.2 {
-        return Map.of();
-        //?} else {
+        /*return Map.of();
+        *///?} else {
         if (!(modelObject instanceof LegacyHumanoidModelAccess humanoidParts)
                 || !(modelObject instanceof LegacyPlayerModelAccess playerParts)) {
             return Map.of();

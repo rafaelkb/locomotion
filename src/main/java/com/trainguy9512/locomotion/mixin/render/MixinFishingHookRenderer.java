@@ -27,10 +27,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FishingHookRenderer.class)
 public abstract class MixinFishingHookRenderer {
 
-    @Shadow
+    //? if >= 1.21.11 {
+    /*@Shadow
     public static HumanoidArm getHoldingArm(Player player) {
         return null;
     }
+    *///?} else {
+    // Before 1.21.11 vanilla inlines this logic in getPlayerHandPos, so there is nothing to shadow.
+    private static HumanoidArm getHoldingArm(Player player) {
+        HumanoidArm mainArm = player.getMainArm();
+        return player.getMainHandItem().is(net.minecraft.world.item.Items.FISHING_ROD) ? mainArm : mainArm.getOpposite();
+    }
+    //?}
 
     @Inject(
             method = "getPlayerHandPos",
@@ -73,16 +81,12 @@ public abstract class MixinFishingHookRenderer {
                             .mul(animationPose.getJointChannel(itemJoint).getTransform())
                             .translate(0, 10, 5);
 
-                    float playerRotationX;
-                    float playerRotationY;
-                    // 1.21.1 exposes interpolated view rotations under
-                    // getViewXRot/getViewYRot; newer versions use getXRot/getYRot.
-                    //? if >= 1.21.2 {
-                    playerRotationX = player.getXRot(partialTick) * Mth.DEG_TO_RAD;
-                    playerRotationY = player.getYRot(partialTick) * -Mth.DEG_TO_RAD;
-                    //?} else {
-                    playerRotationX = player.getViewXRot(partialTick) * Mth.DEG_TO_RAD;
-                    playerRotationY = player.getViewYRot(partialTick) * -Mth.DEG_TO_RAD;
+                    //? if >= 1.21.11 {
+                    /*float playerRotationX = player.getXRot(partialTick) * Mth.DEG_TO_RAD;
+                    float playerRotationY = player.getYRot(partialTick) * -Mth.DEG_TO_RAD;
+                    *///?} else {
+                    float playerRotationX = player.getViewXRot(partialTick) * Mth.DEG_TO_RAD;
+                    float playerRotationY = player.getViewYRot(partialTick) * -Mth.DEG_TO_RAD;
                     //?}
                     Quaternionf playerRotation = new Quaternionf().rotateY(playerRotationY).rotateX(playerRotationX);
                     Matrix4f playerTransform = new Matrix4f()

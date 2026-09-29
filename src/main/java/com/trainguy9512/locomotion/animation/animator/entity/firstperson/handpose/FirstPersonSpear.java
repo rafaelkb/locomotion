@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpo
 
 //? if >= 1.21.11 {
 
-import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonAnimationSequences;
+/*import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonAnimationSequences;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonDrivers;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonMontages;
 import com.trainguy9512.locomotion.animation.data.DriverGetter;
@@ -215,4 +215,4 @@ public class FirstPersonSpear {
     }
 
 }
-//?}
+*///?}

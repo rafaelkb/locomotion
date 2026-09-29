@@ -47,6 +47,7 @@ dependencies {
 		parchment("org.parchmentmc.data:parchment-${versionProp("parchment_minecraft_version")}:${versionProp("parchment_mappings_version")}@zip")
 //		mappings("dev.lambdaurora:${versionProp("yalmm")}")
 	})
+	// Not Fabric support: architectury's common project needs a loader on its classpath to provide Mixin.
 	modImplementation("net.fabricmc:fabric-loader:${versionProp("fabric_loader")}")
 
 	// Mod implementations
@@ -69,11 +70,7 @@ if (stonecutter.eval(minecraft, "<1.21.11")) {
 		.replace("camera.position()", "camera.getPosition()")
 
 	val rewriteLegacySources = tasks.register<Sync>("rewriteLegacySources") {
-		// Stonecutter writes the versioned, preprocessed source tree to
-		// versions/<minecraft>/build/chiseledSrc before Java compilation.  Do not
-		// copy rootProject/src here: that is the unprocessed source and still
-		// contains the version guards intended for other Minecraft versions.
-		from(layout.buildDirectory.dir("chiseledSrc/main/java")) {
+		from(rootProject.file("src/main/java")) {
 			include("**/*.java")
 			filter { line: String -> renameToLegacyNames(line) }
 		}

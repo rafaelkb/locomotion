@@ -2,9 +2,8 @@ plugins {
 	id("dev.kikugie.stonecutter")
 	id("dev.architectury.loom") version "1.13-SNAPSHOT" apply false
 	id("architectury-plugin") version "3.4-SNAPSHOT" apply false
-	id("com.gradleup.shadow") version "9.3.2" apply false
 }
-stonecutter active "1.21.11" /* [SC] DO NOT EDIT */
+stonecutter active "1.21.1" /* [SC] DO NOT EDIT */
 
 // Builds every version into `build/libs/{mod.version}/{loader}`
 stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) {

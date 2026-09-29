@@ -13,8 +13,8 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.GsonHelper;
 //? if < 1.21.11 {
-/*import net.minecraft.util.profiling.ProfilerFiller;
-*///?}
+import net.minecraft.util.profiling.ProfilerFiller;
+//?}
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -67,16 +67,16 @@ public class LocomotionResources implements PreparableReloadListener {
     }
 
     //? if >= 1.21.11 {
-    @Override
+    /*@Override
     public CompletableFuture<Void> reload(SharedState sharedState, Executor exectutor, PreparationBarrier barrier, Executor applyExectutor) {
         return reloadInternal(sharedState.resourceManager(), exectutor, barrier);
     }
-    //?} else {
-    /*@Override
+    *///?} else {
+    @Override
     public CompletableFuture<Void> reload(PreparationBarrier barrier, ResourceManager manager, ProfilerFiller preparationsProfiler, ProfilerFiller reloadProfiler, Executor backgroundExecutor, Executor gameExecutor) {
         return reloadInternal(manager, backgroundExecutor, barrier);
     }
-    *///?}
+    //?}
 
     private static CompletableFuture<Void> reloadInternal(ResourceManager manager, Executor backgroundExecutor, PreparableReloadListener.PreparationBarrier barrier) {
         CompletableFuture<Map<Identifier, JointSkeleton>> loadedJointSkeletons = loadJointSkeletons(manager, backgroundExecutor);

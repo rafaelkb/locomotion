@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.mixin.access;
 
 //? if >= 1.21.2 {
 //?} else {
-/*
+
 import com.trainguy9512.locomotion.access.LegacyHumanoidModelAccess;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -19,4 +19,4 @@ public interface MixinLegacyHumanoidModel extends LegacyHumanoidModelAccess {
     @Accessor("leftLeg") ModelPart locomotion$getLeftLeg();
     @Accessor("rightLeg") ModelPart locomotion$getRightLeg();
 }
-*///?}
+//?}

@@ -92,13 +92,13 @@ public class FirstPersonAttackAnimations {
             .setDoesAnimationOffsetOffHand(true)
             .build());
     //? if >= 1.21.11 {
-    public static final Identifier SPEAR_JAB = register(LocomotionMain.makeIdentifier("spear_jab"), AttackAnimationRule.builder(
+    /*public static final Identifier SPEAR_JAB = register(LocomotionMain.makeIdentifier("spear_jab"), AttackAnimationRule.builder(
             FirstPersonMontages.HAND_SPEAR_JAB_MONTAGE,
             context -> context.item().getUseAnimation() == LocomotionMultiVersionWrappers.getSpearUseAnimation(),
             30
     )
             .build());
-    //? }
+    *///? }
 
     public record AttackAnimationRule(
             MontageConfiguration montageToPlay,

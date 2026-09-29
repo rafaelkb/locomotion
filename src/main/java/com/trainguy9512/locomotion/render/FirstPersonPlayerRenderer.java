@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.render;
 
 //? if >= 1.21.2 {
 
-import com.mojang.blaze3d.vertex.PoseStack;
+/*import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.trainguy9512.locomotion.access.MatrixModelPart;
 import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
@@ -392,8 +392,8 @@ public class FirstPersonPlayerRenderer implements RenderLayerParent<AvatarRender
         return entityRenderDispatcher.getPlayerRenderer(minecraft.player).getModel();
     }
 }
-//?} else {
-/*
+*///?} else {
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.trainguy9512.locomotion.access.LegacyHumanoidModelAccess;
@@ -618,4 +618,4 @@ public class FirstPersonPlayerRenderer {
         }
     }
 }
-*///?}
+//?}

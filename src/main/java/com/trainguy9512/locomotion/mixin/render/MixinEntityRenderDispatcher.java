@@ -21,14 +21,14 @@ public class MixinEntityRenderDispatcher implements FirstPersonPlayerRendererGet
     private FirstPersonPlayerRenderer locomotion$firstPersonPlayerRenderer;
 
     //? if >= 1.21.2 {
-    @Inject(
+    /*@Inject(
             method = "onResourceManagerReload",
             at = @At("TAIL")
     )
     private void constructLocomotionFirstPersonPlayerRenderer(ResourceManager resourceManager, CallbackInfo ci, @Local EntityRendererProvider.Context context){
         this.locomotion$firstPersonPlayerRenderer = new FirstPersonPlayerRenderer(context);
     }
-    //?}
+    *///?}
 
     @Override
     public Optional<FirstPersonPlayerRenderer> locomotion$getFirstPersonPlayerRenderer() {

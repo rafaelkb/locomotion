@@ -69,9 +69,9 @@ Locomotion is a Minecraft: Java mod centered around giving the game's entities a
 >
 > Build the NeoForge variants with `./gradlew chiseledBuildNeoForge`.
 - What mod loaders will this mod be compatible with?
-> Right now both Fabric and NeoForge are supported.
+> Right now only NeoForge is supported.
 - What will the mod require as a dependency?
-> For the fabric version, just Fabric API. Mod Loader and YACL are optional dependencies for both Fabric and NeoForge for the configuration interface.
+> Nothing besides NeoForge. YACL is an optional dependency for the configuration interface.
 - What is this mod compatible with?
 > Currently there is no list of what will or will not work, but generally most cosmetic vanilla-friendly mods like Essential, 3D Skin Layers, and other cosmetic mods should work perfectly fine, along with other performance mods such as Sodium or shader mods such as Iris.
 >

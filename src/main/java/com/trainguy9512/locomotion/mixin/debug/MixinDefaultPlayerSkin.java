@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.mixin.debug;
 
 //? if >= 1.21.11 {
 
-import net.minecraft.client.resources.DefaultPlayerSkin;
+/*import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.world.entity.player.PlayerModelType;
 import net.minecraft.world.entity.player.PlayerSkin;
 import org.spongepowered.asm.mixin.Final;
@@ -35,4 +35,4 @@ public abstract class MixinDefaultPlayerSkin {
         cir.setReturnValue(create("entity/player/wide/steve", PlayerModelType.WIDE));
     }
 }
-//?}
+*///?}

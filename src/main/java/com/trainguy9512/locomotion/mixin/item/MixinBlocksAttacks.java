@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.mixin.item;
 
 //? if >= 1.21.5 {
 
-import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
+/*import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonDrivers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerLevel;
@@ -27,9 +27,9 @@ public class MixinBlocksAttacks {
     }
 }
 
-//?} else {
+*///?} else {
 
-/*import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.item.ShieldItem;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ShieldItem.class)
@@ -37,4 +37,4 @@ public class MixinBlocksAttacks {
 
 }
 
-*///?}
+//?}

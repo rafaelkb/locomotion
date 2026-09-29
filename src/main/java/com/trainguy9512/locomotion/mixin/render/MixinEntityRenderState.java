@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.mixin.render;
 
 //? if >= 1.21.2 {
 
-import com.trainguy9512.locomotion.access.EntityRenderStateAccess;
+/*import com.trainguy9512.locomotion.access.EntityRenderStateAccess;
 import com.trainguy9512.locomotion.animation.animator.entity.EntityJointAnimator;
 import com.trainguy9512.locomotion.animation.pose.ModelPartSpacePose;
 import com.trainguy9512.locomotion.animation.pose.Pose;
@@ -42,4 +42,4 @@ public class MixinEntityRenderState implements EntityRenderStateAccess {
         return Optional.ofNullable(this.entityJointAnimator);
     }
 }
-//?}
+*///?}

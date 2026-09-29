@@ -7,25 +7,25 @@ public class LocomotionMultiVersionWrappers {
 
     public static ItemUseAnimation getTridentUseAnimation() {
         //? if >= 1.21.11 {
-        return ItemUseAnimation.TRIDENT;
-        //?} else {
-        /*return ItemUseAnimation.SPEAR;
-        *///?}
+        /*return ItemUseAnimation.TRIDENT;
+        *///?} else {
+        return ItemUseAnimation.SPEAR;
+        //?}
     }
 
     public static ItemUseAnimation getSpearUseAnimation() {
         //? if >= 1.21.11 {
-        return ItemUseAnimation.SPEAR;
-        //?} else {
-        /*throw new RuntimeException("1.21.11 feature attempted to be used in older version");
-         *///?}
+        /*return ItemUseAnimation.SPEAR;
+        *///?} else {
+        throw new RuntimeException("1.21.11 feature attempted to be used in older version");
+         //?}
     }
 
     public static boolean shouldTriggerClientSwing(InteractionResult result) {
         //? if >= 1.21.2 {
-        return result instanceof InteractionResult.Success success
+        /*return result instanceof InteractionResult.Success success
                 && success.swingSource() == InteractionResult.SwingSource.CLIENT;
-        //?} else {
+        *///?} else {
         return result.shouldSwing();
         //?}
     }

@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.debug;
 
 //? if >= 1.21.11 {
 
-import com.trainguy9512.locomotion.LocomotionMain;
+/*import com.trainguy9512.locomotion.LocomotionMain;
 import net.minecraft.client.gui.components.debug.DebugScreenEntry;
 import net.minecraft.resources.Identifier;
 
@@ -16,4 +16,4 @@ public class LocomotionDebugScreenEntries {
     }
 
 }
-//?}
+*///?}

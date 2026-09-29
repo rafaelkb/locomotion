@@ -42,10 +42,8 @@ public class PartPoseDeserializer implements JsonDeserializer<PartPose> {
                 Vector3f.class,
                 DEFAULT_SCALE
         );
-        // Scale was added to PartPose in 1.21.2.  The 1.21.1 model format
-        // still accepts the same JSON, but its vanilla PartPose ignores scale.
-        //? if >= 1.21.2 {
-        return new PartPose(
+        //? if >= 1.21.11 {
+        /*return new PartPose(
                 translation.x(),
                 translation.y(),
                 translation.z(),
@@ -56,16 +54,9 @@ public class PartPoseDeserializer implements JsonDeserializer<PartPose> {
                 scale.y(),
                 scale.z()
         );
-        //?} else {
-        return PartPose.offsetAndRotation(
-                translation.x(),
-                translation.y(),
-                translation.z(),
-                rotation.x(),
-                rotation.y(),
-                rotation.z()
-        );
+        *///?} else {
+        // PartPose has no scale before 1.21.11
+        return PartPose.offsetAndRotation(translation.x(), translation.y(), translation.z(), rotation.x(), rotation.y(), rotation.z());
         //?}
-
     }
 }

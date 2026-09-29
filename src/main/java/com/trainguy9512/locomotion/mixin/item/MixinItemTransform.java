@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinItemTransform {
 
     //? if >= 1.21.4 {
-    @Inject(
+    /*@Inject(
             method = "apply",
             at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack$Pose;scale(FFF)V")
     )
@@ -23,8 +23,8 @@ public class MixinItemTransform {
             pose.rotate(Axis.YP.rotation(Mth.PI));
         }
     }
-    //?} else {
-    /*@Inject(
+    *///?} else {
+    @Inject(
             method = "apply",
             at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;scale(FFF)V")
     )
@@ -33,5 +33,5 @@ public class MixinItemTransform {
             poseStack.mulPose(Axis.YP.rotation(Mth.PI));
         }
     }
-    *///?}
+    //?}
 }

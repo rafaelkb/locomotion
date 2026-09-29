@@ -190,7 +190,7 @@ public class FirstPersonHandPoses {
             .setItemRenderType(ItemRenderType.MAP)
             .build());
     //? if >= 1.21.11 {
-    public static final Identifier SPEAR = register(LocomotionMain.makeIdentifier("spear"), HandPoseDefinition.builder(
+    /*public static final Identifier SPEAR = register(LocomotionMain.makeIdentifier("spear"), HandPoseDefinition.builder(
             "spear",
             FirstPersonSpear::constructSpearPoseFunction,
             FirstPersonAnimationSequences.HAND_SPEAR_POSE,
@@ -199,7 +199,7 @@ public class FirstPersonHandPoses {
             .setRaiseSequence(FirstPersonAnimationSequences.HAND_SPEAR_RAISE)
             .setLowerSequence(FirstPersonAnimationSequences.HAND_SPEAR_LOWER)
             .build());
-    //? }
+    *///? }
 
     public static Identifier getFallback() {
         return GENERIC_ITEM;

@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.mixin.render;
 
 //? if >= 1.21.2 {
 
-import com.llamalad7.mixinextras.sugar.Local;
+/*import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.trainguy9512.locomotion.access.EntityRenderStateAccess;
@@ -67,8 +67,8 @@ public abstract class MixinLivingEntityRenderer<S extends LivingEntityRenderStat
     }
 
 }
-//?} else {
-/*
+*///?} else {
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
@@ -128,4 +128,4 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
         this.locomotion$currentPose = null;
     }
 }
-*///?}
+//?}

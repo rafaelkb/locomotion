@@ -1,7 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render;
 
 //? if >= 1.21.2 {
-import com.mojang.blaze3d.vertex.PoseStack;
+/*import com.mojang.blaze3d.vertex.PoseStack;
 import com.trainguy9512.locomotion.LocomotionMain;
 import com.trainguy9512.locomotion.access.FirstPersonPlayerRendererGetter;
 import com.trainguy9512.locomotion.render.FirstPersonPlayerRenderer;
@@ -69,8 +69,8 @@ public class MixinItemInHandRenderer {
         }
     }
 }
-//?} else {
-/*
+*///?} else {
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.trainguy9512.locomotion.LocomotionMain;
 import com.trainguy9512.locomotion.access.FirstPersonPlayerRendererGetter;
@@ -112,4 +112,4 @@ public class MixinItemInHandRenderer {
         });
     }
 }
-*///?}
+//?}

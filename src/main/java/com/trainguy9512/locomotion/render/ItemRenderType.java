@@ -16,8 +16,8 @@ public enum ItemRenderType {
     public ItemDisplayContext getItemDisplayContext(HumanoidArm side) {
         if (this == ON_SHELF) {
             //? if >= 1.21.11 {
-            return ItemDisplayContext.ON_SHELF;
-            //?} else {
+            /*return ItemDisplayContext.ON_SHELF;
+            *///?} else {
             return ItemDisplayContext.FIXED;
             //?}
         }

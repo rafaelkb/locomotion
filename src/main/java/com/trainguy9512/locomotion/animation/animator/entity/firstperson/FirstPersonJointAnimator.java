@@ -5,8 +5,8 @@ import com.trainguy9512.locomotion.animation.animator.entity.LivingEntityJointAn
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonHandPoseSwitching;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonShield;
 //? if >= 1.21.11 {
-import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonSpear;
-//?}
+/*import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonSpear;
+*///?}
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose.FirstPersonSpyglass;
 import com.trainguy9512.locomotion.animation.data.*;
 import com.trainguy9512.locomotion.animation.driver.VariableDriver;
@@ -205,14 +205,14 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
         this.extractItemData(player, driverContainer);
 
         //? if >= 1.21.5 {
-        driverContainer.getDriver(FirstPersonDrivers.HOTBAR_SLOT).setValue(player.getInventory().getSelectedSlot());
-        //?} else {
+        /*driverContainer.getDriver(FirstPersonDrivers.HOTBAR_SLOT).setValue(player.getInventory().getSelectedSlot());
+        *///?} else {
         driverContainer.getDriver(FirstPersonDrivers.HOTBAR_SLOT).setValue(player.getInventory().selected);
         //?}
 
         //? if >= 1.21.11 {
-        FirstPersonSpear.extractSpearData(player, driverContainer, montageManager);
-        //? }
+        /*FirstPersonSpear.extractSpearData(player, driverContainer, montageManager);
+        *///? }
 
         this.extractAttackConditionData(player, driverContainer);
         this.handleMontagesFromTriggerDrivers(player, driverContainer, montageManager);
@@ -229,9 +229,9 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
 
         driverContainer.getDriver(FirstPersonDrivers.IS_IN_RIPTIDE).setValue(player.isAutoSpinAttack());
         //? if >= 1.21.5 {
-        driverContainer.getDriver(FirstPersonDrivers.IS_MOVING).setValue(player.input.keyPresses.forward() || player.input.keyPresses.backward() || player.input.keyPresses.left() || player.input.keyPresses.right());
+        /*driverContainer.getDriver(FirstPersonDrivers.IS_MOVING).setValue(player.input.keyPresses.forward() || player.input.keyPresses.backward() || player.input.keyPresses.left() || player.input.keyPresses.right());
         driverContainer.getDriver(FirstPersonDrivers.IS_JUMPING).setValue(player.input.keyPresses.jump());
-        //?} else {
+        *///?} else {
         driverContainer.getDriver(FirstPersonDrivers.IS_MOVING).setValue(player.input.forwardImpulse != 0 || player.input.leftImpulse != 0);
         driverContainer.getDriver(FirstPersonDrivers.IS_JUMPING).setValue(player.input.jumping);
         //?}
@@ -306,8 +306,10 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
                 && !player.onGround()
                 && !player.onClimbable()
                 && !player.isInWater()
-                //? if >= 1.21.2 {
-                && !player.isMobilityRestricted()
+                //? if >= 1.21.11 {
+                /*&& !player.isMobilityRestricted()
+                *///?} else {
+                && !player.hasEffect(net.minecraft.world.effect.MobEffects.BLINDNESS)
                 //?}
                 && !player.isPassenger()
                 && !player.isSprinting();
@@ -350,9 +352,9 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
                 if (itemInHand.getUseAnimation() == ItemUseAnimation.CROSSBOW) {
                     float chargeSpeedMultiplier;
                     //? if >= 1.21.11 {
-                    int chargeDuration = CrossbowItem.getChargeDuration(itemInHand, dataReference);
+                    /*int chargeDuration = CrossbowItem.getChargeDuration(itemInHand, dataReference);
                     chargeSpeedMultiplier = chargeDuration > 0 ? 25f / chargeDuration : 1f;
-                    //?} else {
+                    *///?} else {
                     float chargeTime = EnchantmentHelper.modifyCrossbowChargingTime(itemInHand, dataReference, 1.25f);
                     chargeSpeedMultiplier = chargeTime > 0 ? 1.25f / chargeTime : 1f;
                     //?}
@@ -363,8 +365,8 @@ public class FirstPersonJointAnimator implements LivingEntityJointAnimator<Local
             // Is item on cooldown
             ItemStack renderedItem = driverContainer.getDriverValue(FirstPersonDrivers.getRenderedItemDriver(hand));
             //? if >= 1.21.11 {
-            boolean isItemOnCooldown = dataReference.getCooldowns().isOnCooldown(renderedItem);
-            //?} else {
+            /*boolean isItemOnCooldown = dataReference.getCooldowns().isOnCooldown(renderedItem);
+            *///?} else {
             boolean isItemOnCooldown = dataReference.getCooldowns().isOnCooldown(renderedItem.getItem());
             //?}
             driverContainer.getDriver(FirstPersonDrivers.getItemOnCooldownDriver(hand)).setValue(isItemOnCooldown);

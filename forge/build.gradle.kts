@@ -3,7 +3,7 @@
 plugins {
     id("dev.architectury.loom")
     id("architectury-plugin")
-    id("com.gradleup.shadow")
+    id("com.github.johnrengelman.shadow")
 }
 
 val loader = prop("loom.platform")!!

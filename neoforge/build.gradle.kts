@@ -1,9 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
+import java.util.concurrent.Callable
+
 plugins {
     id("dev.architectury.loom")
     id("architectury-plugin")
-    id("com.gradleup.shadow")
 }
 
 val loader = prop("loom.platform")!!
@@ -102,16 +103,22 @@ tasks.processResources {
     applyProperties(project, listOf("META-INF/neoforge.mods.toml", "${prop("mod.id")}-neoforge.mixins.json", "pack.mcmeta"))
 }
 
-tasks.shadowJar {
-    configurations = listOf(shadowBundle)
+// Bundles the common project into the mod jar. This replaces the Shadow plugin, whose 8.x releases
+// crash on Gradle 9 ("No such property: mode for class ...FileCopyDetails").
+val bundleJar = tasks.register<Jar>("bundleJar") {
+    group = "build"
     archiveClassifier = "dev-shadow"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn(shadowBundle)
+    from(sourceSets.main.get().output)
+    from(Callable { shadowBundle.files.map { zipTree(it) } })
 }
 
 tasks.remapJar {
     injectAccessWidener = true
-    input = tasks.shadowJar.get().archiveFile
+    input = bundleJar.get().archiveFile
     archiveClassifier = null
-    dependsOn(tasks.shadowJar)
+    dependsOn(bundleJar)
 }
 
 tasks.jar {
@@ -141,7 +148,6 @@ tasks.register<Copy>("buildAndCollect") {
 
 stonecutter {
     // Constants should be given a key and a boolean value
-    const("fabric", loader == "fabric")
     const("forge", loader == "forge")
     const("neoforge", loader == "neoforge")
 }

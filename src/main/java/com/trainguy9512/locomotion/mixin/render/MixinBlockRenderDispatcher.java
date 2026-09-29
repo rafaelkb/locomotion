@@ -2,7 +2,7 @@ package com.trainguy9512.locomotion.mixin.render;
 
 //? if >= 1.21.11 {
 
-import com.mojang.blaze3d.vertex.PoseStack;
+/*import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.trainguy9512.locomotion.access.FirstPersonSingleBlockRenderer;
 import net.minecraft.client.Minecraft;
@@ -108,4 +108,4 @@ public abstract class MixinBlockRenderDispatcher implements FirstPersonSingleBlo
         ));
     }
 }
-//?}
+*///?}
