@@ -22,7 +22,7 @@ public class GsonConfiguration {
         //? if >= 1.21.2 {
         builder.setStrictness(Strictness.STRICT);
         //?} else {
-        builder.setLenient(false);
+        builder.setLenient();
         //?}
         return builder
                 .registerTypeAdapter(Vector3f.class, vector3fDeserializer())
