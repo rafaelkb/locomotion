@@ -1,0 +1,632 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
+Running Stonecutter 0.6.2
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources NO-SOURCE
+> Task :buildSrc:compileKotlin
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:classes UP-TO-DATE
+
+> Task :buildSrc:jar
+:jar: No valid plugin descriptors were found in META-INF/gradle-plugins
+
+> Configure project :1.21.1
+Architectury Loom: 1.13.469
+This version of Architectury Loom is in beta! Please report any issues you encounter: https://github.com/architectury/architectury-loom/issues
+Architect Plugin: 3.4.164
+:remapped 51 mods (intermediary -> named) in 2s
+
+> Configure project :1.21.11
+:remapped 44 mods (intermediary -> named) in 2s
+Cannot remap lambda$init$2 because it does not exists in any of the targets [net/minecraft/class_429]
+Cannot remap iterateVisibleBlockEntities because it does not exists in any of the targets [net/minecraft/class_761]
+
+> Configure project :fabric:1.21.11
+:remapped 2 mods (intermediary -> named) in 1s
+:remapped 1 mods (intermediary -> named) in 1s
+
+> Task :1.21.1:setupChiseledBuild
+Switched to 1.21.1 in 206ms. (273 total | 142 processed | 131 skipped)
+
+> Task :1.21.11:setupChiseledBuild
+Switched to 1.21.11 in 92ms. (273 total | 142 processed | 131 skipped)
+
+> Task :fabric:1.21.11:setupChiseledBuild
+Switched to 1.21.11 in 2ms. (5 total | 3 processed | 2 skipped)
+
+> Task :neoforge:1.21.1:setupChiseledBuild
+Switched to 1.21.1 in 3ms. (6 total | 1 processed | 5 skipped)
+
+> Task :neoforge:1.21.11:setupChiseledBuild
+Switched to 1.21.11 in 2ms. (6 total | 1 processed | 5 skipped)
+
+> Task :chiseledStonecutter
+> Task :chiseledBuildNeoforge
+> Task :1.21.11:compileJava
+> Task :1.21.11:processResources
+> Task :1.21.11:classes
+> Task :1.21.11:jar
+> Task :neoforge:1.21.11:compileJava
+> Task :neoforge:1.21.11:processResources
+> Task :neoforge:1.21.11:classes
+> Task :neoforge:1.21.11:jar
+> Task :neoforge:1.21.11:processIncludeJars
+
+> Task :1.21.11:transformProductionNeoForge
+[Architectury Transformer] Read classpath in 1.571 s
+[Architectury Transformer] Transformed jar with 5 transformer(s) in 2.456 s
+
+> Task :neoforge:1.21.11:shadowJar
+> Task :neoforge:1.21.11:sourcesJar
+> Task :neoforge:1.21.11:compileTestJava NO-SOURCE
+> Task :neoforge:1.21.11:processTestResources NO-SOURCE
+> Task :neoforge:1.21.11:testClasses UP-TO-DATE
+> Task :neoforge:1.21.11:test NO-SOURCE
+> Task :neoforge:1.21.11:validateAccessWidener NO-SOURCE
+> Task :neoforge:1.21.11:check UP-TO-DATE
+> Task :neoforge:1.21.11:remapJar
+
+> Task :1.21.1:compileJava
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: not a statement
+         1.21.1's PartPose has no scale and only a private constructor.
+         ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+             ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: unclosed character literal
+         1.21.1's PartPose has no scale and only a private constructor.
+               ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                              ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                       ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: not a statement
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                 ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                  ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: illegal start of expression
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                   ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: <identifier> expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                                       ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:60: error: <identifier> expected
+        return PartPose.offsetAndRotation(
+                                         ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:61: error: <identifier> expected
+                translation.x(),
+                             ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:69: error: class, interface, enum, or record expected
+}
+^
+
+> Task :neoforge:1.21.11:remapSourcesJar
+
+> Task :1.21.1:compileJava FAILED
+13 errors
+
+> Task :neoforge:1.21.11:assemble
+> Task :neoforge:1.21.11:build
+> Task :neoforge:1.21.11:buildAndCollect
+> Task :1.21.1:processResources
+> Task :neoforge:1.21.1:processResources
+> Task :neoforge:1.21.1:processIncludeJars
+> Task :neoforge:1.21.1:sourcesJar
+> Task :neoforge:1.21.1:processTestResources NO-SOURCE
+> Task :neoforge:1.21.1:validateAccessWidener NO-SOURCE
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1790677503384.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/locomotion/locomotion/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':1.21.1:compileJava'.
+> Compilation failed; see the compiler output below.
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: not a statement
+           1.21.1's PartPose has no scale and only a private constructor.
+           ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: not a statement
+           1.21.1's PartPose has no scale and only a private constructor.
+                                                   ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:69: error: class, interface, enum, or record expected
+  }
+  ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: illegal start of expression
+           1.21.1's PartPose has no scale and only a private constructor.
+                                                     ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: unclosed character literal
+           1.21.1's PartPose has no scale and only a private constructor.
+                 ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+           1.21.1's PartPose has no scale and only a private constructor.
+               ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+           1.21.1's PartPose has no scale and only a private constructor.
+                                ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+           1.21.1's PartPose has no scale and only a private constructor.
+                                         ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+           1.21.1's PartPose has no scale and only a private constructor.
+                                                  ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+           1.21.1's PartPose has no scale and only a private constructor.
+                                                    ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: <identifier> expected
+           1.21.1's PartPose has no scale and only a private constructor.
+                                                                         ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:60: error: <identifier> expected
+          return PartPose.offsetAndRotation(
+                                           ^
+  /home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:61: error: <identifier> expected
+                  translation.x(),
+                               ^
+  13 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':1.21.1:compileJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
+	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: not a statement
+         1.21.1's PartPose has no scale and only a private constructor.
+         ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+             ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: unclosed character literal
+         1.21.1's PartPose has no scale and only a private constructor.
+               ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                              ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                       ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: not a statement
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                 ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: ';' expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                  ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: illegal start of expression
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                   ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:59: error: <identifier> expected
+         1.21.1's PartPose has no scale and only a private constructor.
+                                                                       ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:60: error: <identifier> expected
+        return PartPose.offsetAndRotation(
+                                         ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:61: error: <identifier> expected
+                translation.x(),
+                             ^
+/home/runner/work/locomotion/locomotion/versions/1.21.1/build/chiseledSrc/main/java/com/trainguy9512/locomotion/resource/json/PartPoseDeserializer.java:69: error: class, interface, enum, or record expected
+}
+^
+13 errors
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:259)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:244)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:227)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:210)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:176)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:110)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:47)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:64)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:61)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:61)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:47)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:70)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:40)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:62)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:27)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:192)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:64)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:42)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:77)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:133)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:25)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:305)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+	... 30 more
+
+
+BUILD FAILED in 48s
+26 actionable tasks: 26 executed
+########## api dump for 1.21.1
+Running Stonecutter 0.6.2
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources NO-SOURCE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+
+> Configure project :1.21.1
+Architectury Loom: 1.13.469
+This version of Architectury Loom is in beta! Please report any issues you encounter: https://github.com/architectury/architectury-loom/issues
+Architect Plugin: 3.4.164
+
+> Task :1.21.1:dumpApi
+===== net.minecraft.client.model.geom.PartPose
+Compiled from "PartPose.java"
+public class net.minecraft.client.model.geom.PartPose {
+  public static final net.minecraft.client.model.geom.PartPose ZERO;
+  public final float x;
+  public final float y;
+  public final float z;
+  public final float xRot;
+  public final float yRot;
+  public final float zRot;
+  public static net.minecraft.client.model.geom.PartPose offset(float, float, float);
+  public static net.minecraft.client.model.geom.PartPose rotation(float, float, float);
+  public static net.minecraft.client.model.geom.PartPose offsetAndRotation(float, float, float, float, float, float);
+  static {};
+}
+===== net.minecraft.server.packs.resources.PreparableReloadListener
+Compiled from "PreparableReloadListener.java"
+public interface net.minecraft.server.packs.resources.PreparableReloadListener {
+  public abstract java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.util.profiling.ProfilerFiller, net.minecraft.util.profiling.ProfilerFiller, java.util.concurrent.Executor, java.util.concurrent.Executor);
+  public default java.lang.String getName();
+}
+===== net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier
+Compiled from "PreparableReloadListener.java"
+public interface net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier {
+  public abstract <T> java.util.concurrent.CompletableFuture<T> wait(T);
+}
+===== net.minecraft.client.Camera
+Compiled from "Camera.java"
+public class net.minecraft.client.Camera {
+  public static final float FOG_DISTANCE_SCALE;
+  public net.minecraft.client.Camera();
+  public void setup(net.minecraft.world.level.BlockGetter, net.minecraft.world.entity.Entity, boolean, boolean, float);
+  public void tick();
+  protected void move(float, float, float);
+  protected void setRotation(float, float);
+  protected void setPosition(double, double, double);
+  protected void setPosition(net.minecraft.world.phys.Vec3);
+  public net.minecraft.world.phys.Vec3 getPosition();
+  public net.minecraft.core.BlockPos getBlockPosition();
+  public float getXRot();
+  public float getYRot();
+  public org.joml.Quaternionf rotation();
+  public net.minecraft.world.entity.Entity getEntity();
+  public boolean isInitialized();
+  public boolean isDetached();
+  public net.minecraft.client.Camera$NearPlane getNearPlane();
+  public net.minecraft.world.level.material.FogType getFluidInCamera();
+  public final org.joml.Vector3f getLookVector();
+  public final org.joml.Vector3f getUpVector();
+  public final org.joml.Vector3f getLeftVector();
+  public void reset();
+  public float getPartialTickTime();
+  static {};
+}
+===== net.minecraft.client.model.ModelLayerLocation
+
+!! Error: class not found: net.minecraft.client.model.ModelLayerLocation
+===== com.google.gson.Strictness
+
+!! Error: class not found: com.google.gson.Strictness
+===== com.mojang.blaze3d.vertex.PoseStack
+Compiled from "PoseStack.java"
+public class com.mojang.blaze3d.vertex.PoseStack {
+  public com.mojang.blaze3d.vertex.PoseStack();
+  public void translate(double, double, double);
+  public void translate(float, float, float);
+  public void scale(float, float, float);
+  public void mulPose(org.joml.Quaternionf);
+  public void rotateAround(org.joml.Quaternionf, float, float, float);
+  public void pushPose();
+  public void popPose();
+  public com.mojang.blaze3d.vertex.PoseStack$Pose last();
+  public boolean clear();
+  public void setIdentity();
+  public void mulPose(org.joml.Matrix4f);
+}
+===== com.mojang.blaze3d.vertex.PoseStack$Pose
+Compiled from "PoseStack.java"
+public final class com.mojang.blaze3d.vertex.PoseStack$Pose {
+  final org.joml.Matrix4f pose;
+  final org.joml.Matrix3f normal;
+  boolean trustedNormals;
+  com.mojang.blaze3d.vertex.PoseStack$Pose(org.joml.Matrix4f, org.joml.Matrix3f);
+  com.mojang.blaze3d.vertex.PoseStack$Pose(com.mojang.blaze3d.vertex.PoseStack$Pose);
+  void computeNormalMatrix();
+  public org.joml.Matrix4f pose();
+  public org.joml.Matrix3f normal();
+  public org.joml.Vector3f transformNormal(org.joml.Vector3f, org.joml.Vector3f);
+  public org.joml.Vector3f transformNormal(float, float, float, org.joml.Vector3f);
+  public com.mojang.blaze3d.vertex.PoseStack$Pose copy();
+}
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790677549660.json
+
+BUILD SUCCESSFUL in 11s
+4 actionable tasks: 1 executed, 3 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.0/userguide/configuration_cache_enabling.html
+########## api dump for 1.21.11
+Running Stonecutter 0.6.2
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources NO-SOURCE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+
+> Configure project :1.21.1
+Architectury Loom: 1.13.469
+This version of Architectury Loom is in beta! Please report any issues you encounter: https://github.com/architectury/architectury-loom/issues
+Architect Plugin: 3.4.164
+
+> Task :1.21.11:dumpApi
+===== net.minecraft.client.model.geom.PartPose
+Compiled from "PartPose.java"
+public final class net.minecraft.client.model.geom.PartPose extends java.lang.Record {
+  public static final net.minecraft.client.model.geom.PartPose ZERO;
+  public net.minecraft.client.model.geom.PartPose(float, float, float, float, float, float, float, float, float);
+  public static net.minecraft.client.model.geom.PartPose offset(float, float, float);
+  public static net.minecraft.client.model.geom.PartPose rotation(float, float, float);
+  public static net.minecraft.client.model.geom.PartPose offsetAndRotation(float, float, float, float, float, float);
+  public net.minecraft.client.model.geom.PartPose translated(float, float, float);
+  public net.minecraft.client.model.geom.PartPose withScale(float);
+  public net.minecraft.client.model.geom.PartPose scaled(float);
+  public net.minecraft.client.model.geom.PartPose scaled(float, float, float);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float x();
+  public float y();
+  public float z();
+  public float xRot();
+  public float yRot();
+  public float zRot();
+  public float xScale();
+  public float yScale();
+  public float zScale();
+  static {};
+}
+===== net.minecraft.server.packs.resources.PreparableReloadListener
+Compiled from "PreparableReloadListener.java"
+public interface net.minecraft.server.packs.resources.PreparableReloadListener {
+  public abstract java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor, net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, java.util.concurrent.Executor);
+  public default void prepareSharedState(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState);
+  public default java.lang.String getName();
+}
+===== net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier
+Compiled from "PreparableReloadListener.java"
+public interface net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier {
+  public abstract <T> java.util.concurrent.CompletableFuture<T> wait(T);
+}
+===== net.minecraft.client.Camera
+Compiled from "Camera.java"
+public class net.minecraft.client.Camera implements net.minecraft.world.waypoints.TrackedWaypoint$Camera {
+  public net.minecraft.client.Camera();
+  public void setup(net.minecraft.world.level.Level, net.minecraft.world.entity.Entity, boolean, boolean, float);
+  public void tick();
+  protected void move(float, float, float);
+  protected void setRotation(float, float);
+  protected void setPosition(double, double, double);
+  protected void setPosition(net.minecraft.world.phys.Vec3);
+  public net.minecraft.world.phys.Vec3 position();
+  public net.minecraft.core.BlockPos blockPosition();
+  public float xRot();
+  public float yRot();
+  public float yaw();
+  public org.joml.Quaternionf rotation();
+  public net.minecraft.world.entity.Entity entity();
+  public boolean isInitialized();
+  public boolean isDetached();
+  public net.minecraft.world.attribute.EnvironmentAttributeProbe attributeProbe();
+  public net.minecraft.client.Camera$NearPlane getNearPlane();
+  public net.minecraft.world.level.material.FogType getFluidInCamera();
+  public org.joml.Vector3fc forwardVector();
+  public org.joml.Vector3fc upVector();
+  public org.joml.Vector3fc leftVector();
+  public void reset();
+  public float getPartialTickTime();
+  static {};
+}
+===== net.minecraft.client.model.ModelLayerLocation
+
+!! Error: class not found: net.minecraft.client.model.ModelLayerLocation
+===== com.google.gson.Strictness
+Compiled from "Strictness.java"
+public final class com.google.gson.Strictness extends java.lang.Enum<com.google.gson.Strictness> {
+  public static final com.google.gson.Strictness LENIENT;
+  public static final com.google.gson.Strictness LEGACY_STRICT;
+  public static final com.google.gson.Strictness STRICT;
+  public static com.google.gson.Strictness[] values();
+  public static com.google.gson.Strictness valueOf(java.lang.String);
+  static {};
+}
+===== com.mojang.blaze3d.vertex.PoseStack
+Compiled from "PoseStack.java"
+public class com.mojang.blaze3d.vertex.PoseStack {
+  public com.mojang.blaze3d.vertex.PoseStack();
+  public void translate(double, double, double);
+  public void translate(float, float, float);
+  public void translate(net.minecraft.world.phys.Vec3);
+  public void scale(float, float, float);
+  public void mulPose(org.joml.Quaternionfc);
+  public void rotateAround(org.joml.Quaternionfc, float, float, float);
+  public void pushPose();
+  public void popPose();
+  public com.mojang.blaze3d.vertex.PoseStack$Pose last();
+  public boolean isEmpty();
+  public void setIdentity();
+  public void mulPose(org.joml.Matrix4fc);
+}
+===== com.mojang.blaze3d.vertex.PoseStack$Pose
+Compiled from "PoseStack.java"
+public final class com.mojang.blaze3d.vertex.PoseStack$Pose {
+  public com.mojang.blaze3d.vertex.PoseStack$Pose();
+  public void set(com.mojang.blaze3d.vertex.PoseStack$Pose);
+  public org.joml.Matrix4f pose();
+  public org.joml.Matrix3f normal();
+  public org.joml.Vector3f transformNormal(org.joml.Vector3fc, org.joml.Vector3f);
+  public org.joml.Vector3f transformNormal(float, float, float, org.joml.Vector3f);
+  public org.joml.Matrix4f translate(float, float, float);
+  public void scale(float, float, float);
+  public void rotate(org.joml.Quaternionfc);
+  public void rotateAround(org.joml.Quaternionfc, float, float, float);
+  public void setIdentity();
+  public void mulPose(org.joml.Matrix4fc);
+  public com.mojang.blaze3d.vertex.PoseStack$Pose copy();
+}
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790677560916.json
+
+BUILD SUCCESSFUL in 7s
+4 actionable tasks: 1 executed, 3 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.0/userguide/configuration_cache_enabling.html
