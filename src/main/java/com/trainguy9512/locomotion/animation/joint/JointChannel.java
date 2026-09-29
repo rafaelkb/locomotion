@@ -26,7 +26,13 @@ public final class JointChannel {
     }
 
     public static JointChannel ofPartPose(PartPose partPose){
+        // PartPose gained scale components and accessor methods in 1.21.2.
+        // 1.21.1 stores only translation/rotation as public fields.
+        //? if >= 1.21.2 {
         return ofTranslationRotationScaleEuler(new Vector3f(partPose.x(), partPose.y(), partPose.z()), new Vector3f(partPose.xRot(), partPose.yRot(), partPose.zRot()), new Vector3f(partPose.xScale(), partPose.yScale(), partPose.zScale()), true);
+        //?} else {
+        return ofTranslationRotationScaleEuler(new Vector3f(partPose.x, partPose.y, partPose.z), new Vector3f(partPose.xRot, partPose.yRot, partPose.zRot), new Vector3f(1, 1, 1), true);
+        //?}
     }
 
     public static JointChannel ofTranslationRotationScaleEuler(Vector3f translation, Vector3f rotationEuler, Vector3f scale, boolean visibility){
