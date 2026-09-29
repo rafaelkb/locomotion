@@ -6,13 +6,11 @@ pluginManagement {
         maven("https://maven.architectury.dev")
         maven("https://maven.minecraftforge.net")
         maven("https://maven.neoforged.net/releases/")
-//		maven("https://maven.kikugie.dev/snapshots")
     }
 }
 
 plugins {
-    // Make sure the version here is the same as the dependency in buildSrc/build.gradle.kts.kts
-    id("dev.kikugie.stonecutter") version "0.5.1"
+    id("dev.kikugie.stonecutter") version "0.8"
 }
 
 stonecutter {
@@ -22,9 +20,7 @@ stonecutter {
         versions("1.21.11")
         vcsVersion = "1.21.11"
         branch("fabric")
-        //branch("forge") { versions("1.21.5") }+
-        // Keep the current release on the active version while also building a 1.21.1 port.
-        branch("neoforge") { versions("1.21.11", "1.21.1") }
+        branch("neoforge") { versions("1.21.11") }
     }
 }
 
