@@ -52,3 +52,15 @@ jobs:
           name: build-log-${{ matrix.os }}
           path: build/ci/gradle.log
           if-no-files-found: ignore
+
+      - name: summarize build errors
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo '## Gradle diagnostics'
+            echo
+            echo '```text'
+            grep -E '(^|/)(error:|FAILURE:|What went wrong|BUILD FAILED|Execution failed)' build/ci/gradle.log | tail -200 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
