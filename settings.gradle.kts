@@ -19,9 +19,14 @@ stonecutter {
     centralScript = "build.gradle.kts"
     kotlinController = true
     create(rootProject) {
-        versions("1.21.11")
+        // The root branch holds the common (shared) source set. Every version that a
+        // loader branch targets has to be registered here as well, otherwise that
+        // branch's `stonecutter.node.sibling("")` lookup finds no common project and
+        // the build fails to configure.
+        versions("1.21.11", "1.21.1")
         vcsVersion = "1.21.11"
-        branch("fabric")
+        // Fabric only targets the current development version; 1.21.1 is NeoForge only.
+        branch("fabric") { versions("1.21.11") }
         //branch("forge") { versions("1.21.5") }+
         // Keep the current release on the active version while also building a 1.21.1 port.
         branch("neoforge") { versions("1.21.11", "1.21.1") }

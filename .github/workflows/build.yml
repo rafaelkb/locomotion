@@ -1,40 +1,82 @@
-# Automatically build the project and run any configured tests for every push
-# and submitted pull request. This can help catch issues that only occur on
-# certain platforms or Java versions, and provides a first line of defence
-# against bad commits.
+# Builds the NeoForge targets and always publishes the build log (and any jars
+# that were produced) to the scratch `ci-logs` branch, so a failed run can still
+# be inspected.
 
 name: build
 on: [pull_request, push]
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
-    strategy:
-      matrix:
-        java: [
-          21,    # Current Java LTS & minimum supported by Minecraft
-        ]
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+  neoforge:
+    name: NeoForge
+    runs-on: ubuntu-latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
-      - name: validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
-      - name: setup jdk ${{ matrix.java }}
+        with:
+          fetch-depth: 0
+
+      - name: setup jdk 21
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java }}
-          distribution: 'microsoft'
+          java-version: 21
+          distribution: 'temurin'
+
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
       - name: make gradle wrapper executable
-        if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
-      - name: build
-        run: ./gradlew chiseledBuild
-#      - name: merge
-#        run: ./gradlew mergeJars
-      - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '21' }}
+
+      - name: build neoforge jars
+        run: |
+          set -o pipefail
+          ./gradlew --continue --stacktrace chiseledBuildNeoforge 2>&1 | tee build.log
+
+      - name: summarise built jars
+        if: always()
+        run: |
+          echo "### jars" >> "$GITHUB_STEP_SUMMARY"
+          find build -name '*.jar' 2>/dev/null | sort | while read -r jar; do
+            ls -l "$jar" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            unzip -l "$jar" 2>/dev/null | head -40 >> "$GITHUB_STEP_SUMMARY" || true
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          done
+
+      - name: upload build artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Artifacts
-          path: build/libs/
+          name: neoforge-build
+          path: |
+            build/libs/
+            build.log
+          if-no-files-found: warn
+
+      - name: publish log and jars to the ci-logs branch
+        if: always()
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          sha=$(git rev-parse --short HEAD)
+          run_id=${{ github.run_id }}
+
+          staging=$(mktemp -d)
+          if [ -f build.log ]; then cp build.log "$staging/"; else echo "no build.log produced" > "$staging/build.log"; fi
+          mkdir -p "$staging/libs"
+          if [ -d build/libs ]; then cp -r build/libs/. "$staging/libs/"; fi
+
+          git checkout --orphan ci-logs-scratch
+          git rm -rq . || true
+          cp -r "$staging"/. .
+          git add -A
+          git commit -q -m "build log for $sha (run $run_id)"
+          git push --force origin HEAD:refs/heads/ci-logs

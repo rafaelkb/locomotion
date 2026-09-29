@@ -67,7 +67,7 @@ Locomotion is a Minecraft: Java mod centered around giving the game's entities a
 - What versions of the game will this mod support?
 > The current development target is Minecraft: Java Edition 1.21.11. An experimental NeoForge 1.21.1 target is also included; it uses legacy render hooks for first-person and third-person player animations and for chest/shulker animations. Newer render-state-only integrations and the newer debug UI remain unavailable on that older target. Minecraft: Bedrock Edition will not be supported.
 >
-> Build the NeoForge variants with `./gradlew chiseledBuildNeoForge`.
+> Build the NeoForge variants with `./gradlew chiseledBuildNeoforge` (the task name is derived from the Stonecutter branch id `neoforge`, so the trailing `f` is lowercase). The resulting jars land in `build/libs/<mod version>/neoforge/`.
 - What mod loaders will this mod be compatible with?
 > Right now both Fabric and NeoForge are supported.
 - What will the mod require as a dependency?
