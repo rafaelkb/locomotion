@@ -116,7 +116,7 @@ dependencies {
 }
 
 tasks.processResources {
-    applyProperties(project, listOf("fabric.mod.json", "${prop("mod.id")}-fabric.mixin.json"))
+    applyProperties(project, listOf("fabric.mod.json", "${prop("mod.id")}-fabric.mixins.json"))
 }
 
 tasks.shadowJar {

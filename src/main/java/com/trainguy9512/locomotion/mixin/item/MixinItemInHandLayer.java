@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.item;
 
+//? if >= 1.21.2 {
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -67,3 +69,4 @@ public abstract class MixinItemInHandLayer<T extends LivingEntity, S extends Arm
          */
     }
 }
+//?}

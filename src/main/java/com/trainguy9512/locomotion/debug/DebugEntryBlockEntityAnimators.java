@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.debug;
 
+//? if >= 1.21.11 {
+
 import com.trainguy9512.locomotion.LocomotionMain;
 import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
 import com.trainguy9512.locomotion.animation.driver.Driver;
@@ -27,3 +29,4 @@ public class DebugEntryBlockEntityAnimators implements DebugScreenEntry {
         });
     }
 }
+//?}

@@ -15,7 +15,6 @@ import com.trainguy9512.locomotion.animation.pose.function.montage.MontageManage
 import com.trainguy9512.locomotion.resource.LocomotionResources;
 import com.trainguy9512.locomotion.animation.util.Interpolator;
 import com.trainguy9512.locomotion.animation.util.TimeSpan;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelPart;
 
 import java.util.Map;
@@ -121,9 +120,7 @@ public class AnimationDataContainer implements DriverGetter {
         return pose.convertedToComponentSpace().convertedToModelPartSpace();
     }
 
-    public <S> void setupAnimWithAnimationPose(Model<S> model, float partialTicks){
-        model.resetPose();
-
+    public void setupAnimWithAnimationPose(Object model, float partialTicks){
         ModelPartSpacePose pose = this.getInterpolatedAnimationPose(partialTicks);
         pose.setupAnimOnModel(model);
     }

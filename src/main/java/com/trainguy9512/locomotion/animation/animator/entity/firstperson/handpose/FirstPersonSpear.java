@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.animation.animator.entity.firstperson.handpose;
 
+//? if >= 1.21.11 {
+
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonAnimationSequences;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonDrivers;
 import com.trainguy9512.locomotion.animation.animator.entity.firstperson.FirstPersonMontages;
@@ -213,3 +215,4 @@ public class FirstPersonSpear {
     }
 
 }
+//?}

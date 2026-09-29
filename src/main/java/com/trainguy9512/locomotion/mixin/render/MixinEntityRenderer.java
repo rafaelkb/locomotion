@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render;
 
+//? if >= 1.21.2 {
+
 import com.trainguy9512.locomotion.access.EntityRenderStateAccess;
 import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
 import com.trainguy9512.locomotion.animation.data.AnimationDataContainer;
@@ -31,3 +33,4 @@ public class MixinEntityRenderer<T extends Entity, S extends EntityRenderState> 
         }
     }
 }
+//?}

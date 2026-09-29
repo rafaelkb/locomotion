@@ -20,6 +20,7 @@ public class MixinEntityRenderDispatcher implements FirstPersonPlayerRendererGet
     @Unique
     private FirstPersonPlayerRenderer locomotion$firstPersonPlayerRenderer;
 
+    //? if >= 1.21.2 {
     @Inject(
             method = "onResourceManagerReload",
             at = @At("TAIL")
@@ -27,9 +28,16 @@ public class MixinEntityRenderDispatcher implements FirstPersonPlayerRendererGet
     private void constructLocomotionFirstPersonPlayerRenderer(ResourceManager resourceManager, CallbackInfo ci, @Local EntityRendererProvider.Context context){
         this.locomotion$firstPersonPlayerRenderer = new FirstPersonPlayerRenderer(context);
     }
+    //?}
 
     @Override
     public Optional<FirstPersonPlayerRenderer> locomotion$getFirstPersonPlayerRenderer() {
+        //? if >= 1.21.2 {
+        //?} else {
+        if (this.locomotion$firstPersonPlayerRenderer == null) {
+            this.locomotion$firstPersonPlayerRenderer = new FirstPersonPlayerRenderer((EntityRenderDispatcher) (Object) this);
+        }
+        //?}
         return Optional.ofNullable(this.locomotion$firstPersonPlayerRenderer);
     }
 }

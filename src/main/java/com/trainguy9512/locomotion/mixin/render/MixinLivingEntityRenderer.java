@@ -1,5 +1,7 @@
 package com.trainguy9512.locomotion.mixin.render;
 
+//? if >= 1.21.2 {
+
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -65,3 +67,65 @@ public abstract class MixinLivingEntityRenderer<S extends LivingEntityRenderStat
     }
 
 }
+//?} else {
+/*
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import com.trainguy9512.locomotion.animation.animator.JointAnimatorDispatcher;
+import com.trainguy9512.locomotion.animation.animator.entity.LivingEntityJointAnimator;
+import com.trainguy9512.locomotion.animation.pose.ModelPartSpacePose;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.world.entity.LivingEntity;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(LivingEntityRenderer.class)
+public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderer<T> implements RenderLayerParent<T, M> {
+    @Shadow protected M model;
+
+    @Unique
+    private ModelPartSpacePose locomotion$currentPose;
+
+    protected MixinLivingEntityRenderer(EntityRendererProvider.Context context) {
+        super(context);
+    }
+
+    @Inject(method = "render", at = @At("HEAD"))
+    private void locomotion$preparePose(T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, CallbackInfo ci) {
+        ModelPartSpacePose.clearModelPartMatrices(this.model);
+        this.locomotion$currentPose = JointAnimatorDispatcher.getInstance()
+                .getEntityAnimationDataContainer(entity)
+                .map(dataContainer -> dataContainer.getInterpolatedAnimationPose(partialTicks))
+                .orElse(null);
+        if (this.locomotion$currentPose != null) {
+            this.locomotion$currentPose.setupAnimOnModel(this.model);
+        }
+    }
+
+    @Inject(method = "setupRotations", at = @At("HEAD"), cancellable = true)
+    private void locomotion$transformEntity(T entity, PoseStack poseStack, float bob, float bodyYaw, float partialTicks, float scale, CallbackInfo ci) {
+        if (this.locomotion$currentPose != null) {
+            float rotation = this.locomotion$currentPose.getCustomAttributeValueOrDefault(LivingEntityJointAnimator.ENTITY_ROTATION_ATTRIBUTE, 0);
+            poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - rotation));
+            String rootJoint = this.locomotion$currentPose.getJointSkeleton().getRootJoint();
+            this.locomotion$currentPose.getJointChannel(rootJoint).transformPoseStack(poseStack, 16f);
+            ci.cancel();
+        }
+    }
+
+    @Inject(method = "render", at = @At("TAIL"))
+    private void locomotion$clearPose(T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, CallbackInfo ci) {
+        ModelPartSpacePose.clearModelPartMatrices(this.model);
+        this.locomotion$currentPose = null;
+    }
+}
+*///?}

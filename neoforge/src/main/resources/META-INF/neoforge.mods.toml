@@ -19,7 +19,7 @@ ordering = "NONE"
 side = "BOTH"
 
 [[mixins]]
-config = "${mod_id}-common.mixins.json"
+config = "${mod_id}-common-${minecraft_version}.mixins.json"
 
 [[mixins]]
 config = "${mod_id}-neoforge.mixins.json"

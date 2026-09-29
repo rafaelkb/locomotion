@@ -46,6 +46,7 @@ public class LocomotionMain {
 	private static void registerAnimators() {
 		JointAnimatorRegistry.registerFirstPersonPlayerJointAnimator(new FirstPersonJointAnimator());
 
+		// Player, chest, and shulker animations are handled by legacy ModelPart render hooks on 1.21.1.
 		JointAnimatorRegistry.registerEntityJointAnimator(EntityType.PLAYER, new ThirdPersonPlayerJointAnimator());
 
 		JointAnimatorRegistry.registerBlockEntityJointAnimator(BlockEntityType.CHEST, new ChestJointAnimator<>());

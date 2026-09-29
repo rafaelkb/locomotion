@@ -54,7 +54,19 @@ dependencies {
 }
 
 tasks.processResources {
-	applyProperties(project, listOf("${prop("mod.id")}-common.mixin.json"))
+	applyProperties(project, listOf("${prop("mod.id")}-common.mixins.json"))
+}
+
+stonecutter {
+	// Minecraft renamed ResourceLocation to Identifier in 1.21.11.
+	replacements.string(current.parsed < "1.21.11") {
+		replace("Identifier", "ResourceLocation")
+	}
+
+	// 1.21.2 renamed UseAnim to ItemUseAnimation.
+	replacements.string(current.parsed < "1.21.2") {
+		replace("ItemUseAnimation", "UseAnim")
+	}
 }
 
 java {

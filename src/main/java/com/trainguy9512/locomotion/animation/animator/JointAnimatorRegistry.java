@@ -5,7 +5,6 @@ import com.trainguy9512.locomotion.animation.animator.block_entity.BlockEntityJo
 import com.trainguy9512.locomotion.animation.animator.entity.EntityJointAnimator;
 import com.trainguy9512.locomotion.animation.animator.entity.LivingEntityJointAnimator;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -18,10 +17,10 @@ import java.util.Set;
 
 public class JointAnimatorRegistry {
 
-    private static final HashMap<EntityType<?>, EntityJointAnimator<?, ?>> THIRD_PERSON_ENTITY_JOINT_ANIMATORS = Maps.newHashMap();
+    private static final HashMap<EntityType<?>, EntityJointAnimator<?>> THIRD_PERSON_ENTITY_JOINT_ANIMATORS = Maps.newHashMap();
     private static final HashMap<BlockEntityType<?>, BlockEntityJointAnimator<?>> BLOCK_ENTITY_JOINT_ANIMATORS = Maps.newHashMap();
 
-    private static LivingEntityJointAnimator<LocalPlayer, AvatarRenderState> FIRST_PERSON_PLAYER_JOINT_ANIMATOR = null;
+    private static LivingEntityJointAnimator<LocalPlayer> FIRST_PERSON_PLAYER_JOINT_ANIMATOR = null;
 
     private JointAnimatorRegistry(){
 
@@ -32,7 +31,7 @@ public class JointAnimatorRegistry {
      * @param type                      Type of entity associated with the living entity
      * @param jointAnimator             Newly constructed entity joint animator object
      */
-    public static <T extends Entity> void registerEntityJointAnimator(EntityType<T> type, EntityJointAnimator<T, ?> jointAnimator){
+    public static <T extends Entity> void registerEntityJointAnimator(EntityType<T> type, EntityJointAnimator<T> jointAnimator){
         THIRD_PERSON_ENTITY_JOINT_ANIMATORS.put(type, jointAnimator);
     }
 
@@ -45,14 +44,14 @@ public class JointAnimatorRegistry {
         BLOCK_ENTITY_JOINT_ANIMATORS.put(type, jointAnimator);
     }
 
-    public static void registerFirstPersonPlayerJointAnimator(LivingEntityJointAnimator<LocalPlayer, AvatarRenderState> firstPersonPlayerJointAnimator){
+    public static void registerFirstPersonPlayerJointAnimator(LivingEntityJointAnimator<LocalPlayer> firstPersonPlayerJointAnimator){
         FIRST_PERSON_PLAYER_JOINT_ANIMATOR = firstPersonPlayerJointAnimator;
     }
 
 
     @SuppressWarnings("unchecked")
-    public static <T extends Entity> Optional<EntityJointAnimator<T, ?>> getThirdPersonJointAnimator(T entity){
-        return Optional.ofNullable((EntityJointAnimator<T, ?>) THIRD_PERSON_ENTITY_JOINT_ANIMATORS.get(entity.getType()));
+    public static <T extends Entity> Optional<EntityJointAnimator<T>> getThirdPersonJointAnimator(T entity){
+        return Optional.ofNullable((EntityJointAnimator<T>) THIRD_PERSON_ENTITY_JOINT_ANIMATORS.get(entity.getType()));
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +59,7 @@ public class JointAnimatorRegistry {
         return Optional.ofNullable((BlockEntityJointAnimator<T>) BLOCK_ENTITY_JOINT_ANIMATORS.get(type));
     }
 
-    public static Optional<LivingEntityJointAnimator<LocalPlayer, AvatarRenderState>> getFirstPersonPlayerJointAnimator(){
+    public static Optional<LivingEntityJointAnimator<LocalPlayer>> getFirstPersonPlayerJointAnimator(){
         return Optional.ofNullable(FIRST_PERSON_PLAYER_JOINT_ANIMATOR);
     }
 

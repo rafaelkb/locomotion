@@ -9,16 +9,10 @@ import com.trainguy9512.locomotion.animation.pose.function.JointTransformerFunct
 import com.trainguy9512.locomotion.animation.pose.function.PoseFunction;
 import com.trainguy9512.locomotion.animation.pose.function.cache.CachedPoseContainer;
 import com.trainguy9512.locomotion.animation.pose.function.montage.MontageManager;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 
-public class ThirdPersonPlayerJointAnimator implements EntityJointAnimator<Player, AvatarRenderState> {
-    @Override
-    public void postProcessModelParts(EntityModel<AvatarRenderState> entityModel, AvatarRenderState entityRenderState) {
-
-    }
+public class ThirdPersonPlayerJointAnimator implements EntityJointAnimator<Player> {
 
     @Override
     public Identifier getJointSkeleton() {

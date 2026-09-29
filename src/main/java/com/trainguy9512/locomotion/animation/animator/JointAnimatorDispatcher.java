@@ -63,9 +63,9 @@ public class JointAnimatorDispatcher {
 
     public <T extends Entity> void tickEntityJointAnimators(Iterable<T> entitiesForRendering) {
         for (T entity : entitiesForRendering) {
-            Optional<EntityJointAnimator<T, ?>> potentialJointAnimator = JointAnimatorRegistry.getThirdPersonJointAnimator(entity);
+            Optional<EntityJointAnimator<T>> potentialJointAnimator = JointAnimatorRegistry.getThirdPersonJointAnimator(entity);
             if (potentialJointAnimator.isPresent()) {
-                EntityJointAnimator<T, ?> jointAnimator = potentialJointAnimator.get();
+                EntityJointAnimator<T> jointAnimator = potentialJointAnimator.get();
                 Optional<AnimationDataContainer> potentialDataContainer = this.getEntityAnimationDataContainer(entity);
                 if (potentialDataContainer.isPresent()) {
                     AnimationDataContainer dataContainer = potentialDataContainer.get();
@@ -120,7 +120,7 @@ public class JointAnimatorDispatcher {
         UUID uuid = entity.getUUID();
         if(!this.entityAnimationDataContainerStorage.containsKey(uuid)){
             if (JointAnimatorRegistry.getThirdPersonJointAnimator(entity).isPresent()) {
-                EntityJointAnimator<?, ?> jointAnimator = JointAnimatorRegistry.getThirdPersonJointAnimator(entity).get();
+                EntityJointAnimator<?> jointAnimator = JointAnimatorRegistry.getThirdPersonJointAnimator(entity).get();
                 this.entityAnimationDataContainerStorage.put(uuid, AnimationDataContainer.of(jointAnimator));
             }
         }
