@@ -69,7 +69,11 @@ if (stonecutter.eval(minecraft, "<1.21.11")) {
 		.replace("camera.position()", "camera.getPosition()")
 
 	val rewriteLegacySources = tasks.register<Sync>("rewriteLegacySources") {
-		from(rootProject.file("src/main/java")) {
+		// Stonecutter materializes the versioned, preprocessed source tree in the
+		// current project directory (versions/<minecraft>/src/main/java).  Do not
+		// copy rootProject/src here: that is the unprocessed source and still
+		// contains the version guards intended for other Minecraft versions.
+		from(project.file("src/main/java")) {
 			include("**/*.java")
 			filter { line: String -> renameToLegacyNames(line) }
 		}
