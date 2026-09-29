@@ -113,17 +113,29 @@ public class FirstPersonGenericItems {
             Items.ENDER_CHEST
     );
 
+    //? if >= 1.21.11 {
     public static final List<TagKey<Item>> BLOCK_ITEM_TAG_OVERRIDES = List.of(
             ItemTags.COPPER_CHESTS,
             ItemTags.SHULKER_BOXES,
             ItemTags.SKULLS,
             ItemTags.BEDS
     );
+    //?} else {
+    /*public static final List<TagKey<Item>> BLOCK_ITEM_TAG_OVERRIDES = List.of(
+            ItemTags.SKULLS,
+            ItemTags.BEDS
+    );
+    *///?}
 
     private static boolean isBlockItem(ItemStack itemStack) {
         if (!(itemStack.getItem() instanceof BlockItem)) {
             return false;
         }
+        //? if < 1.21.11 {
+        /*if (net.minecraft.world.level.block.Block.byItem(itemStack.getItem()) instanceof net.minecraft.world.level.block.ShulkerBoxBlock) {
+            return true;
+        }
+        *///?}
         for (Item item : BLOCK_ITEM_OVERRIDES) {
             if (itemStack.is(item)) {
                 return true;

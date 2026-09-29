@@ -87,7 +87,7 @@ public abstract class MixinChestRenderer {
     @Shadow @Final private ModelPart doubleRightLid;
     @Shadow @Final private ModelPart doubleRightLock;
 
-    @Inject(method = "render", at = @At("HEAD"))
+    @Inject(method = "render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At("HEAD"))
     private void locomotion$applyAnimationPose(BlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, CallbackInfo ci) {
         Map<String, List<ModelPart>> modelParts = this.locomotion$getModelParts();
         locomotion$clearMatrices(modelParts);
@@ -107,7 +107,7 @@ public abstract class MixinChestRenderer {
         }
     }
 
-    @Inject(method = "render", at = @At("TAIL"))
+    @Inject(method = "render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At("TAIL"))
     private void locomotion$clearAnimationPose(BlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, CallbackInfo ci) {
         locomotion$clearMatrices(this.locomotion$getModelParts());
     }

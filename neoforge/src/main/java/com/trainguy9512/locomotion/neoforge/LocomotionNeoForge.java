@@ -11,7 +11,11 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+//? if >= 1.21.11 {
 import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
+//?} else {
+/*import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+*///?}
 //? if >= 1.21.11 {
 import net.neoforged.neoforge.client.event.RegisterDebugEntriesEvent;
 //?}
@@ -35,9 +39,15 @@ public class LocomotionNeoForge {
 
     }
 
+    //? if >= 1.21.11 {
     public void onResourceReload(AddClientReloadListenersEvent event) {
         event.addListener(LocomotionResources.RELOADER_IDENTIFIER, new LocomotionResources());
     }
+    //?} else {
+    /*public void onResourceReload(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(new LocomotionResources());
+    }
+    *///?}
 
     //? if >= 1.21.11 {
     public void onRegisterDebugScreenEntries(RegisterDebugEntriesEvent event) {

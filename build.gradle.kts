@@ -57,15 +57,30 @@ tasks.processResources {
 	applyProperties(project, listOf("${prop("mod.id")}-common.mixins.json"))
 }
 
-stonecutter {
-	// Minecraft renamed ResourceLocation to Identifier in 1.21.11.
-	replacements.string(current.parsed < "1.21.11") {
-		replace("Identifier", "ResourceLocation")
+// The installed Stonecutter plugin (0.5.1) has no global text-replacement API, so for versions before 1.21.11
+// the sources are rewritten here, at build time, into a generated directory that is compiled instead.
+//  - 1.21.11 renamed ResourceLocation to Identifier
+//  - 1.21.2 renamed UseAnim to ItemUseAnimation
+//  - Camera#getPosition() became Camera#position()
+if (stonecutter.eval(minecraft, "<1.21.11")) {
+	val renameToLegacyNames = fun(line: String): String = line
+		.replace(Regex("\\bIdentifier\\b"), "ResourceLocation")
+		.replace(Regex("\\bItemUseAnimation\\b"), "UseAnim")
+		.replace("camera.position()", "camera.getPosition()")
+
+	val rewriteLegacySources = tasks.register<Sync>("rewriteLegacySources") {
+		from(rootProject.file("src/main/java")) {
+			include("**/*.java")
+			filter { line: String -> renameToLegacyNames(line) }
+		}
+		into(layout.buildDirectory.dir("generated/legacy-sources"))
 	}
 
-	// 1.21.2 renamed UseAnim to ItemUseAnimation.
-	replacements.string(current.parsed < "1.21.2") {
-		replace("ItemUseAnimation", "UseAnim")
+	sourceSets.named("main") {
+		java.setSrcDirs(listOf(rewriteLegacySources))
+	}
+	tasks.matching { it.name == "compileJava" || it.name == "sourcesJar" }.configureEach {
+		dependsOn(rewriteLegacySources)
 	}
 }
 

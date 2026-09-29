@@ -19,9 +19,11 @@ stonecutter {
     centralScript = "build.gradle.kts"
     kotlinController = true
     create(rootProject) {
-        versions("1.21.11")
+        // The common (architectury) project must exist for every version that any loader builds.
+        versions("1.21.11", "1.21.1")
         vcsVersion = "1.21.11"
-        branch("fabric")
+        // Fabric is only built for the current release; 1.21.1 is NeoForge-only.
+        branch("fabric") { versions("1.21.11") }
         //branch("forge") { versions("1.21.5") }+
         // Keep the current release on the active version while also building a 1.21.1 port.
         branch("neoforge") { versions("1.21.11", "1.21.1") }

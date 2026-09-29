@@ -97,7 +97,7 @@ import java.util.Map;
 public abstract class MixinShulkerBoxRenderer {
     @Shadow @Final private ShulkerModel<?> model;
 
-    @Inject(method = "render", at = @At("HEAD"))
+    @Inject(method = "render(Lnet/minecraft/world/level/block/entity/ShulkerBoxBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At("HEAD"))
     private void locomotion$applyAnimationPose(ShulkerBoxBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, CallbackInfo ci) {
         ModelPart base = ((LegacyShulkerModelAccess) (Object) this.model).locomotion$getBase();
         ModelPart lid = this.model.getLid();
@@ -124,7 +124,7 @@ public abstract class MixinShulkerBoxRenderer {
         }
     }
 
-    @Inject(method = "render", at = @At("TAIL"))
+    @Inject(method = "render(Lnet/minecraft/world/level/block/entity/ShulkerBoxBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At("TAIL"))
     private void locomotion$clearAnimationPose(ShulkerBoxBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, CallbackInfo ci) {
         LegacyShulkerModelAccess parts = (LegacyShulkerModelAccess) (Object) this.model;
         ((MatrixModelPart) (Object) parts.locomotion$getBase()).locomotion$setMatrix(null);
