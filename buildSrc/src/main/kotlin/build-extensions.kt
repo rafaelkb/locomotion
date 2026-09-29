@@ -1,22 +1,9 @@
-import dev.kikugie.stonecutter.build.StonecutterBuild
+import dev.kikugie.stonecutter.build.StonecutterBuildExtension
 import org.gradle.api.Project
 import org.gradle.language.jvm.tasks.ProcessResources
 
-/**
- * Retrieves a property value from the project based on the provided key.
- *
- * @param key the property key to look up in the project's properties.
- * @return the value of the property as a string, or null if the property does not exist.
- */
 fun Project.prop(key: String): String? = findProperty(key)?.toString()
 
-/**
- * Retrieves a version-specific or wildcard property key from the project's properties.
- *
- * @param key the specific key to identify the property related to the version or a wildcard.
- * @return the value of the property as a string if found, or throws an IllegalArgumentException if the property is missing.
- * @throws IllegalArgumentException if neither the version-specific key nor the wildcard key is found.
- */
 fun Project.versionProp(key: String): String? {
     val specificKey = "version.${stonecutter(project).current.version.replace(".", "_")}.$key"
     val wildcardKey = "version.*.$key"
@@ -28,12 +15,6 @@ fun Project.versionProp(key: String): String? {
     }
 }
 
-/**
- * Retrieves a version-specific or wildcard property key from the project's properties.
- *
- * @param key the specific key to identify the property related to the version or a wildcard.
- * @return the value of the property as a string if found, or null if the property is missing.
- */
 fun Project.versionPropOrNull(key: String): String? {
     val specificKey = "version.${stonecutter(project).current.version.replace(".", "_")}.$key"
     val wildcardKey = "version.*.$key"
@@ -45,13 +26,6 @@ fun Project.versionPropOrNull(key: String): String? {
     }
 }
 
-/**
- * Applies a set of properties to a `ProcessResources` task, based on the project's configuration
- * and additional resource files.
- *
- * @param project the Gradle project that contains the configuration and properties.
- * @param files an iterable collection of file paths to which the properties will be applied.
- */
 fun ProcessResources.applyProperties(project: Project, files: Iterable<String>) {
     val props = mutableMapOf(
             "mod_version" to project.prop("mod.version"),
@@ -78,6 +52,6 @@ fun ProcessResources.applyProperties(project: Project, files: Iterable<String>) 
     }
 }
 
-fun stonecutter(project: Project): StonecutterBuild {
-    return requireNotNull(project.extensions.findByType(StonecutterBuild::class.java)) { "Stonecutter build extension not found" }
+fun stonecutter(project: Project): StonecutterBuildExtension {
+    return requireNotNull(project.extensions.findByType(StonecutterBuildExtension::class.java)) { "Stonecutter build extension not found" }
 }
